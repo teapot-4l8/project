@@ -177,13 +177,14 @@ public class MainActivity extends AppCompatActivity {
 //                        editor.commit();
 //
 //                    }
+
                     Log.e("url->", req.toString());
                     Log.e("请求发送成功", dataString);
-// TODO: 跳转至activity2
-                    // 数据传入activity2
-//                    MainActivity.this.intent.putExtra("return", dataString);
-                    // 开启
-//                    startActivity(MainActivity.this.intent);
+                    
+                    // 创建意图对象，传递数据到Mactivity2页面
+                    Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                    intent.putExtra("data", dataString);
+                    startActivity(intent);
                 } catch (IOException ex) {
                     Log.e("url->", req.toString());
                     Log.e("Main", "网络请求异常");
