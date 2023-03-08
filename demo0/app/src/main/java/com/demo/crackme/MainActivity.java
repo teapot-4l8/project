@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 点击登录，执行此方法
-     * @param intent
      */
     private void loginForm() {
         // 1.获取用户名和密码
@@ -180,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
 
                     Log.e("url->", req.toString());
                     Log.e("请求发送成功", dataString);
-                    
+
                     // 创建意图对象，传递数据到Mactivity2页面
                     Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                     intent.putExtra("data", dataString);
@@ -191,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }.start();
-        Toast.makeText(this, "登录", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "java层加密", Toast.LENGTH_SHORT).show();
     }
 
 

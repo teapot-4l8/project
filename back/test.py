@@ -17,6 +17,12 @@ def auth():
     print(request.headers)
     return jsonify({'code':200, 'data':'success', 'token':uuid.uuid4()})
 
+# http://10.115.156.92:5000/api/v1/post
+@app.route('/api/v1/post', methods=['POST'])
+def v1():
+    print(request.data)
+    return jsonify({'code': 200, 'data': 'success', 'token': uuid.uuid4()})
+
 
 if __name__ == '__main__':
     # 电脑的IP
