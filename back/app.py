@@ -19,4 +19,4 @@ def auth():
 
 if __name__ == '__main__':
     # 电脑的IP
-    app.run(host='192.168.2.11')
+    app.run(host='10.115.156.92')
