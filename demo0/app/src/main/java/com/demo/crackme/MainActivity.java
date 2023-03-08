@@ -37,16 +37,13 @@ import okhttp3.ResponseBody;
 public class MainActivity extends AppCompatActivity {
     private TextView txtUser, txtPwd;
     private Button btnLogin, btnReset;
-//    private Intent intent;
 
-    public Intent intent = new Intent(this, MainActivity2.class);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // 创建intent对象来在activity间传数据
-        Intent intent = new Intent(this, MainActivity2.class);
+        // 创建intent对象
+        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
         initView();
         initListener();
     }
@@ -144,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         // 4.将三个值：用户名、密码、签名 网络请求发送API（校验）
         // okhttp，安装 & 引入 & 使用（创建一个线程去执行）
         // 5.获取返回值
+
         new Thread() {
             @Override
             public void run() {
@@ -181,11 +179,11 @@ public class MainActivity extends AppCompatActivity {
 //                    }
                     Log.e("url->", req.toString());
                     Log.e("请求发送成功", dataString);
-
+// TODO: 跳转至activity2
                     // 数据传入activity2
-                    MainActivity.this.intent.putExtra("return", dataString);
+//                    MainActivity.this.intent.putExtra("return", dataString);
                     // 开启
-                    startActivity(MainActivity.this.intent);
+//                    startActivity(MainActivity.this.intent);
                 } catch (IOException ex) {
                     Log.e("url->", req.toString());
                     Log.e("Main", "网络请求异常");
