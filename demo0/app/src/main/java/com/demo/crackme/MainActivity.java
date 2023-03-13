@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//import com.google.gson.Gson;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
@@ -163,19 +163,18 @@ public class MainActivity extends AppCompatActivity {
                     Response res = call.execute();
                     ResponseBody body = res.body();
                     String dataString = body.string();
-                    // {"status": true, "token": "dafkauekjsoiuksjdfuxdf", "name": "武沛齐"}
 
                     // 反序列化
-//                    HttpResponse obj = new Gson().fromJson(dataString,HttpResponse.class);
-//                    if(obj.status){
-//                        // token保存本地xml文件
-//                        // /data/data/com.nb.liyang
-//                        SharedPreferences sp = getSharedPreferences("sp_city", MODE_PRIVATE);
-//                        SharedPreferences.Editor editor = sp.edit();
-//                        editor.putString("token",obj.token);
-//                        editor.commit();
-//
-//                    }
+                    HttpResponse obj = new Gson().fromJson(dataString,HttpResponse.class);
+
+                    if(obj.status){
+                        // token保存本地xml文件
+                        // /data/data/com.demo.crackme
+                        SharedPreferences sp = getSharedPreferences("LLLLLLLLLLLL", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("token",obj.token);
+                        editor.commit();
+                    }
 
                     Log.e("url->", req.toString());
                     Log.e("请求发送成功", dataString);

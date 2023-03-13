@@ -15,13 +15,13 @@ def auth():
     # sign = request.form.get('sign')
     # print(username, password, sign)
     print(request.headers)
-    return jsonify({'code':200, 'data':'success', 'token':uuid.uuid4()})
+    return jsonify({'code':200, 'data':'success', 'token':uuid.uuid4(), 'activity': 1, 'status': True})
 
 # http://10.115.156.92:5000/api/v1/post
 @app.route('/api/v1/post', methods=['POST'])
 def v1():
     print(request.data)
-    return jsonify({'code': 200, 'data': 'success', 'token': uuid.uuid4()})
+    return jsonify({'code': 200, 'data': 'success', 'token': uuid.uuid4(), 'activity': 2, 'status': True})
 
 
 if __name__ == '__main__':
