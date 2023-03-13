@@ -18,7 +18,8 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class MainActivity2 extends AppCompatActivity {
-    private TextView txtUser, txtPwd;
+    private TextView txtUser;
+    private TextView txtPwd;
     private Button btnLogin, btnReset;
 
     @Override
@@ -98,7 +99,8 @@ public class MainActivity2 extends AppCompatActivity {
         // TODO: jni加密
 //        String signString = md5(sb.toString());
 //        dataMap.put("sign", signString);
-
+        String username = String.valueOf(txtUser.getText());
+        String password = String.valueOf(txtPwd.getText());
         new Thread() {
             @Override
             public void run() {
@@ -109,7 +111,7 @@ public class MainActivity2 extends AppCompatActivity {
 
                 Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.43.71:5000").build();
                 HttpReq req = retrofit.create(HttpReq.class);
-                Call<ResponseBody> call = req.postLogin(txtUser.toString(), txtPwd.toString());
+                Call<ResponseBody> call = req.postLogin(username, password);
                 try{
                     ResponseBody responseBody = call.execute().body();
                     String responseString = responseBody.string();

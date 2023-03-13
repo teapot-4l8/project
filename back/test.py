@@ -20,6 +20,7 @@ def auth():
 # http://10.115.156.92:5000/api/v1/post
 @app.route('/api/v1/post', methods=['POST'])
 def v1():
+    # TODO: 后端接收不到retrofit传的东西，抓包可以抓到
     print(request.data)
     return jsonify({'code': 200, 'data': 'success', 'token': uuid.uuid4(), 'activity': 2, 'status': True})
 
