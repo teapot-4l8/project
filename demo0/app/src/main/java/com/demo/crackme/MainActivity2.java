@@ -132,7 +132,6 @@ public class MainActivity2 extends AppCompatActivity {
 //                        SharedPreferences.Editor editor = sp.edit();
 //                        editor.putString("token",obj.token);
 //                        editor.commit();
-//
 //                    }
 
                 } catch (Exception e) {

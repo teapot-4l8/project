@@ -184,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("data", dataString);
                     startActivity(intent);
                 } catch (IOException ex) {
+                    Toast.makeText(getApplicationContext(), "登录失败", Toast.LENGTH_SHORT).show();
                     Log.e("url->", req.toString());
                     Log.e("Main", "网络请求异常");
                 }
