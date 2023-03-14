@@ -42,6 +42,10 @@ public class MainActivity2 extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        // TODO: 测试代码 删掉
+//        int sign2 = EncryptUtils.test(11, 22);
+//        Log.e("jjjjjjjjjjjjjj ->", String.valueOf(sign2));
+
         initView();
         initListener();
     }
@@ -111,7 +115,9 @@ public class MainActivity2 extends AppCompatActivity {
 
                 Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.43.71:5000").build();
                 HttpReq req = retrofit.create(HttpReq.class);
-                Call<ResponseBody> call = req.postLogin(username, password);
+                String enced = password; // TODO:记得测试完替换掉下面的
+//                String enced = EncryptUtils.encryptc(username, password);
+                Call<ResponseBody> call = req.postLogin(username, enced);
                 try{
                     ResponseBody responseBody = call.execute().body();
                     String responseString = responseBody.string();
@@ -130,6 +136,8 @@ public class MainActivity2 extends AppCompatActivity {
 //                    }
 
                 } catch (Exception e) {
+                    // getApplicationContext()是一个Context类的方法，它用于获取当前应用程序的上下文
+                    Toast.makeText(getApplicationContext(), "登录失败", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
