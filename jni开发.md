@@ -1,4 +1,4 @@
-# day10 jni开发
+# jni开发
 
 **今日目标**：在安卓程序中实现**Java**和**C**代码的相互调用。
 
@@ -152,11 +152,7 @@ JNICALL Java_com_nb_s4luffy_EncryptUtils_v2(JNIEnv *env, jclass obj, jstring ori
 
 ![image-20220804153306910](assets/image-20220804153306910.png)
 
-
-
 ## 5.一波案例（Java调C）
-
-
 
 ### 5.1 数字处理
 
@@ -173,8 +169,6 @@ JNICALL Java_com_nb_s4luffy_EncryptUtils_v1(JNIEnv *env, jclass clazz, jint v1, 
     return v1 + v2;
 }
 ```
-
-
 
 ### 5.2 字符串修改-指针
 
@@ -210,8 +204,6 @@ Java_com_nb_s5dabai_EncryptUtils_v2(JNIEnv *env, jclass clazz, jstring old) {
 }
 ```
 
-
-
 ### 5.3 字符串修改-数组
 
 ```java
@@ -231,26 +223,6 @@ Java_com_nb_s4luffy_EncryptUtils_v3(JNIEnv *env, jclass clazz, jstring old) {
     return (*env)->NewStringUTF(env, info);
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### 5.4 字符串拼接
 
@@ -293,8 +265,6 @@ Java_com_nb_s4luffy_EncryptUtils_v4(JNIEnv *env, jclass clazz, jstring name, jst
     return (*env)->NewStringUTF(env, result);
 }
 ```
-
-
 
 ### 5.5 字符处理
 
@@ -344,8 +314,6 @@ Java_com_nb_s4luffy_EncryptUtils_v5(JNIEnv *env, jclass clazz, jstring data) {
 }
 ```
 
-
-
 ### 5.6 字节处理
 
 ```java
@@ -383,8 +351,6 @@ Java_com_nb_s4luffy_EncryptUtils_v6(JNIEnv *env, jclass clazz, jbyteArray data) 
 }
 ```
 
-
-
 ### 5.7 字节处理-案例
 
 ```java
@@ -420,8 +386,6 @@ Java_com_nb_s4luffy_EncryptUtils_v7(JNIEnv *env, jclass clazz, jbyteArray data) 
 # 多看一样
 ```
 
-
-
 ## 6.一波案例（C调Java）
 
 ### 6.1 静态方法
@@ -429,8 +393,6 @@ Java_com_nb_s4luffy_EncryptUtils_v7(JNIEnv *env, jclass clazz, jbyteArray data) 
 ```java
 String n8 = EncryptUtils.v8();
 ```
-
-
 
 ```java
 package com.nb.s4luffy;
@@ -443,8 +405,6 @@ class EncryptUtils {
     public static native String v8();
 }
 ```
-
-
 
 ```c
 #include <jni.h>

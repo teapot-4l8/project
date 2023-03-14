@@ -12,13 +12,13 @@ JNIEXPORT jstring JNICALL
 Java_com_nb_s5dabai_EncryptUtils_v2(JNIEnv *env, jclass clazz, jstring origin) {
     //jstring转换C语言中的字符串数组
     // info = "root"  {r,o,o,t}
-    char *info = (*env)->GetStringUTFChars(env, origin, 0);
+    char *info = (*env)->GetStringUTFChars(env, origin, 0);  // 代表首位
 
     // 调用Java中的类，再提供点内容
-    info += 1;
+    info += 1; // o
     *info = 'w';
 
-    info += 1;
+    info += 1;  // o
     *info = 'x';
 
     info -= 2;

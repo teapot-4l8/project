@@ -34,5 +34,4 @@ public class MainActivity extends AppCompatActivity {
         String value = DynamicUtils.ssss(11,22);
         Log.e("---->", value); //  rwxt
     }
-
 }
