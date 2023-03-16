@@ -14,6 +14,7 @@ class EncryptUtils {
     // 11, 22
     public static native int v1(int n1, int n2);
 
+    // c 调用 java 静态方法
     public static native String v2(String origin);
 
     public static native SignQuery3 ss(String data);

@@ -21,12 +21,10 @@ Java_com_nb_s5dabai_EncryptUtils_v2(JNIEnv *env, jclass clazz, jstring origin) {
     info += 1;  // o
     *info = 'x';
 
-    info -= 2;
+    info -= 2;  // 指针退回
 
     // 找到类
     jclass cls = (*env)->FindClass(env, "com/nb/s5dabai/SignQuery");
-
-    // 实例化对象
 
     // 找到方法
     jmethodID method1 = (*env)->GetStaticMethodID(env, cls, "getPart1", "()Ljava/lang/String;");
@@ -39,17 +37,18 @@ Java_com_nb_s5dabai_EncryptUtils_v2(JNIEnv *env, jclass clazz, jstring origin) {
     return (*env)->NewStringUTF(env, info);
 }
 
-
+// 返回值是 SignQuery3 这个对象
 JNIEXPORT jobject JNICALL
 Java_com_nb_s5dabai_EncryptUtils_ss(JNIEnv *env, jclass clazz, jstring data) {
     // TODO: implement ss()
-
     jclass cls = (*env)->FindClass(env, "com/nb/s5dabai/SignQuery3");
-
+    // 实例化对象
     jmethodID init = (*env)->GetMethodID(env, cls, "<init>","(Ljava/lang/String;Ljava/lang/String;)V");
 
     //C语言中的某个功能data数据进行加密
-    jstring sign = (*env)->NewStringUTF(env, "hahahahhaha");
+    jstring sign = (*env)->NewStringUTF(env, "hahahahhaha"); // 在字符串后面添加了这一串内容
+    // NewObject 函数用于创建一个 SignQuery3 类型的对象，并调用其构造方法。
+    // init 表示构造方法的 ID，sign 和 data 分别代表构造方法的两个参数，即 token 和 params
     jobject cls_obj = (*env)->NewObject(env, cls, init, sign, data);
     return cls_obj;
 }

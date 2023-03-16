@@ -24,13 +24,17 @@ public class MainActivity extends AppCompatActivity {
         int sign1 = EncryptUtils.v1(11, 22);
         Log.e("---->", String.valueOf(sign1)); //  133
 
+        // 静态注册
         String sign2 = EncryptUtils.v2("root");
         Log.e("---->", sign2); //  rwxt
 
         SignQuery3 obj = EncryptUtils.ss("aid=123&page=9&size=19");
-        String result = obj.toString();
-        Log.e("---->", result); //  rwxt
+        String result = obj.toString();  // SignQuery3的toString方法 获得拼接结果
+        Log.e("---->", result); // aid=123&page=9&size=19&sign=hahahahhaha
+        Log.e("[*]---->", obj.token);  // hahahahhaha
+        Log.e("[*]---->", obj.params); //  aid=123&page=9&size=19
 
+        // 动态注册
         String value = DynamicUtils.ssss(11,22);
         Log.e("---->", value); //  rwxt
     }

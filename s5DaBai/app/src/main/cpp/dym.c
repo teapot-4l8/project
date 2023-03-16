@@ -15,7 +15,7 @@ static JNINativeMethod gMethods[] = {
 JNIEXPORT jint
 
 JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
-
+    // 加载c文件时默认的方法
     JNIEnv *env = NULL;
 
     // 在java虚拟机中获取env
@@ -27,6 +27,8 @@ JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
     jclass clazz = (*env)->FindClass(env, "com/nb/s5dabai/DynamicUtils");
 
     // 将类中的方法注册到JNI中 (RegisterNatives)
+    // gMethods: c和java方法的对应关系  1: 有1个这种关系 有几个方法就写几
+    // TODO -> ida 找: RegisterNatives 的第三个参数 里面有c和java的函数对应关系
     int res = (*env)->RegisterNatives(env, clazz, gMethods, 1);
     if (res < 0) {
         return JNI_ERR;

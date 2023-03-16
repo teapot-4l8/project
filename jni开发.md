@@ -447,8 +447,6 @@ Java_com_nb_s4luffy_EncryptUtils_v8(JNIEnv *env, jclass clazz) {
 }
 ```
 
-
-
 ```java
 package com.nb.s4luffy;
 
@@ -472,8 +470,6 @@ public class SignQuery {
 }
 ```
 
-
-
 ### 6.2 实例方法
 
 ```java
@@ -491,8 +487,6 @@ class EncryptUtils {
     public static native String v9();
 }
 ```
-
-
 
 ```c
 #include <jni.h>
@@ -535,8 +529,6 @@ Java_com_nb_s4luffy_EncryptUtils_v9(JNIEnv *env, jclass clazz) {
 }
 ```
 
-
-
 ```java
 package com.nb.s4luffy;
 
@@ -569,11 +561,7 @@ public class SignQuery {
 }
 ```
 
-
-
 ## 7.静态和动态注册
-
-
 
 ### 7.1 静态注册
 
@@ -589,15 +577,11 @@ Java_com_nb_s2long_EncryptUtils_s8
 
 ![image-20220519193907236](assets/image-20220519193907236.png)
 
-
-
 ![image-20220519193832337](assets/image-20220519193832337.png)
 
 ![image-20220519193843997](assets/image-20220519193843997.png)
 
 ![image-20220519193944611](assets/image-20220519193944611.png)
-
-
 
 ### 7.2 动态注册
 
