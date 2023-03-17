@@ -1,0 +1,5 @@
+QARK：QARK（Quick Android Review Kit）是一个用于Android应用程序静态和动态分析的工具。它可以帮助开发人员、安全测试人员和安全研究人员检测应用程序中的漏洞和风险。 https://github.com/linkedin/qark
+
+AndroPyTool：AndroPyTool是一个基于Python的工具，用于对Android应用程序进行反编译、分析和审计。它包括多个模块，可以用于任务自动化、样本生成、代码审计等。 https://github.com/AndroPyTool/AndroPyTool
+
+Anubis：Anubis是一个针对Android恶意软件的动态分析平台，支持自动化恶意软件检测、行为分析、数据可视化等功能。它使用Frida和Docker技术来实现动态分析。 https://github.com/timwhitez/Anubis
