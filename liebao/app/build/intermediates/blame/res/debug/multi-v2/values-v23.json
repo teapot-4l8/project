@@ -1,0 +1,45 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\Administrator\\Desktop\\code\\liebao\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Administrator\\Desktop\\code\\liebao\\app\\src\\main\\res\\values-v23\\styles.xml",
+                    "from": {
+                        "startLines": "2,4,6,8,10,19,28,30,32,35,39,41,43,45,49",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "57,213,369,465,573,1298,2035,2175,2323,2555,2790,2926,3054,3188,3429",
+                        "endLines": "3,5,7,9,18,27,29,31,34,38,40,42,44,48,51",
+                        "endColumns": "12,12,12,12,12,12,12,12,12,12,12,12,12,12,12",
+                        "endOffsets": "207,363,459,567,1292,2029,2169,2317,2549,2784,2920,3048,3182,3423,3583"
+                    },
+                    "to": {
+                        "startLines": "4,6,8,10,12,21,30,32,34,37,41,43,45,47,51",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "184,338,492,586,692,1408,2136,2274,2420,2649,2880,3014,3140,3272,3509",
+                        "endLines": "5,7,9,11,20,29,31,33,36,40,42,44,46,50,53",
+                        "endColumns": "12,12,12,12,12,12,12,12,12,12,12,12,12,12,12",
+                        "endOffsets": "333,487,581,687,1403,2131,2269,2415,2644,2875,3009,3135,3267,3504,3661"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Administrator\\Desktop\\code\\liebao\\app\\src\\main\\res\\values-v23\\bools.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "57,124",
+                        "endColumns": "65,62",
+                        "endOffsets": "118,182"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,121",
+                        "endColumns": "65,62",
+                        "endOffsets": "116,179"
+                    }
+                }
+            ]
+        }
+    ]
+}

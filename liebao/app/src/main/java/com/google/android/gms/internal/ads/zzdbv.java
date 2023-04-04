@@ -1,0 +1,16 @@
+package com.google.android.gms.internal.ads;
+
+/* compiled from: com.google.android.gms:play-services-ads@@19.8.0 */
+/* loaded from: classes.dex */
+public final class zzdbv implements zzesa<String> {
+    private final zzdbs zzhcw;
+
+    public zzdbv(zzdbs zzdbsVar) {
+        this.zzhcw = zzdbsVar;
+    }
+
+    @Override // com.google.android.gms.internal.ads.zzesn
+    public final /* synthetic */ Object get() {
+        return (String) zzesg.zzbd(this.zzhcw.zzats());
+    }
+}

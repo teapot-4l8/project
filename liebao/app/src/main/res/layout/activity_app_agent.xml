@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:background="#f8f9fa" android:layout_width="match_parent" android:layout_height="match_parent">
+    <include layout="@layout/headerbar"/>
+    <com.speed.speed_library.widget.LoadingLayout android:id="@+id/loading_layout" android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:textSize="12sp" android:textColor="#8992aa" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="30dp" android:layout_marginTop="20dp" android:layout_marginRight="30dp" android:layout_marginBottom="20dp" android:text="@string/setting_use_vpn_app_desc" android:lineSpacingExtra="2dp"/>
+            <EditText android:textSize="@dimen/sp_18" android:textColor="@color/colorBlack" android:textColorHint="#c1c4cb" android:ellipsize="middle" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@+id/et_search" android:background="#ffffff" android:paddingLeft="15dp" android:paddingTop="8dp" android:paddingRight="15dp" android:paddingBottom="8dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="30dp" android:layout_marginTop="15dp" android:layout_marginRight="30dp" android:layout_marginBottom="15dp" android:hint="搜索应用" android:drawableLeft="@mipmap/ic_route_search" android:drawablePadding="15dp" android:drawableStart="@mipmap/ic_route_search"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerView" android:background="@color/colorWhite" android:layout_width="match_parent" android:layout_height="match_parent"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerView_search" android:background="@color/colorWhite" android:layout_width="match_parent" android:layout_height="match_parent"/>
+        </LinearLayout>
+    </com.speed.speed_library.widget.LoadingLayout>
+</LinearLayout>

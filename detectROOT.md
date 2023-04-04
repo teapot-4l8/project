@@ -19,7 +19,7 @@
               Log.e(TAG, "设备已被 root！");
               finish();  // 关闭当前 Activity（退出应用）
           } else {
-              Log.i(TAG, "设备未被 root。");
+              Log.e(TAG, "设备未被 root。");
               // TODO: 继续应用正常启动流程
           }
       }

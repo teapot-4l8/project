@@ -12,7 +12,8 @@
 原先是从空白文件建立的，不知道怎么配置c++环境。后期要重新建立一个c++项目再把主要代码迁移过去
 - portecle-1.11 证书转化工具, p12 bks互转
 - cccrackjni  学习jni用的，有bug
-- s5DaBai jni，我老师写的，没有bug，可以拿来参考
+- liebao 用jadx反编译导出的gradle project 可以参考它的检测逻辑 最主要在so文件里
+- s5DaBai jni，我老师写的，没有bug，可以拿来参考。。。新加了很多检测
 - server_cert 服务端证书校验资料
 	- api 后端接口
 		- client 客户端证书
@@ -41,7 +42,10 @@
 1. 服务端证书校验
 2. 客户端证书校验
 3. java层http非常简单的sign加密
-4. 
+4.  java层实现root检测
+4.  java层实现xposed检测
+4.  java层实现bl锁检测
+4.  java层实现模拟器检测
 
 ### 待实现：
 
@@ -49,9 +53,18 @@
 2. 完善so层协议加密
 3. 代码混淆技术的学习
 4. app加壳技术的学习(可选)
-5. root检测
-6. frida检测
-7. xposed/lsp检测
-8. bl锁检测
-9. 
+5. so层实现root检测
+6. so层实现frida检测
+7. so层实现xposed检测
+8. so层实现bl锁检测
+8. so层实现模拟器检测
+9. 代理检测
+9. 签名校验
+
+```
+git add .
+git commit -m "first commit"
+git remote add origin https://github.com/xusong0621/CommandProject.git
+git push -u origin master
+```
 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:background="@color/colorWhite" android:layout_width="match_parent" android:layout_height="match_parent">
+    <include layout="@layout/headerbar"/>
+    <View android:background="@color/item_line" android:visibility="visible" android:layout_width="match_parent" android:layout_height="5dp"/>
+    <LinearLayout android:orientation="vertical" android:paddingTop="10dp" android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical" android:id="@+id/rl_setting_smart_route" android:paddingLeft="20dp" android:paddingTop="16dp" android:paddingRight="20dp" android:paddingBottom="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/colorBlackFour" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="智能路由"/>
+                <Switch android:id="@+id/route_switch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <TextView android:textSize="12sp" android:textColor="#a8a8a8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="智能识别访问地址，适用于多数场景"/>
+        </LinearLayout>
+        <View android:background="@color/item_line" android:layout_width="match_parent" android:layout_height="1dp"/>
+        <LinearLayout android:orientation="vertical" android:paddingLeft="20dp" android:paddingTop="16dp" android:paddingRight="20dp" android:paddingBottom="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/colorBlackFour" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="应用代理"/>
+                <Switch android:id="@+id/route_app_switch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <TextView android:textSize="12sp" android:textColor="#a8a8a8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="只有选中的应用走代理,请谨慎勾选"/>
+        </LinearLayout>
+        <View android:background="@color/item_line" android:layout_width="match_parent" android:layout_height="1dp"/>
+        <LinearLayout android:orientation="vertical" android:id="@+id/rl_setting_connect" android:paddingLeft="20dp" android:paddingTop="16dp" android:paddingRight="20dp" android:paddingBottom="16dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <RelativeLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@+id/iv_setting_network_lock" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_setting_network_lock" android:layout_alignParentLeft="true"/>
+                <TextView android:textColor="@color/colorBlackFour" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="网络锁"/>
+                <Switch android:id="@+id/switch_npv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <TextView android:textSize="12sp" android:textColor="#a8a8a8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:layout_marginRight="60dp" android:text="无论什么异常情况（如无网络等），都保持VPN安全连接，不会自动断开，不会暴露本地ip"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <View android:background="@color/item_line" android:visibility="gone" android:layout_width="match_parent" android:layout_height="5dp"/>
+            <TextView android:textSize="@dimen/sp_12" android:textColor="#a8a8a8" android:paddingLeft="20dp" android:paddingRight="20dp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="@string/setting_white_disconnect_desc"/>
+            <RelativeLayout android:id="@+id/rl_run" android:paddingLeft="20dp" android:paddingTop="16dp" android:paddingRight="20dp" android:paddingBottom="16dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/colorBlackFour" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20dp" android:text="@string/setting_white_disconnect_setting_one"/>
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_right_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <RelativeLayout android:id="@+id/rl_start_white" android:paddingLeft="20dp" android:paddingTop="16dp" android:paddingRight="20dp" android:paddingBottom="16dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="10dp">
+                <TextView android:textColor="@color/colorBlackFour" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20dp" android:text="@string/setting_white_disconnect_setting_second"/>
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_right_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <View android:id="@+id/rl_close_screen_line" android:background="@color/item_line" android:visibility="visible" android:layout_width="match_parent" android:layout_height="1dp"/>
+            <RelativeLayout android:id="@+id/rl_close_screen" android:paddingLeft="20dp" android:paddingRight="20dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp">
+                <TextView android:textColor="@color/colorBlackFour" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="锁屏处理" android:layout_centerVertical="true"/>
+                <Switch android:id="@+id/switch_use_music" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:switchMinWidth="40dp"/>
+            </RelativeLayout>
+        </LinearLayout>
+        <View android:background="@color/item_line" android:layout_width="match_parent" android:layout_height="1dp"/>
+        <RelativeLayout android:orientation="horizontal" android:id="@+id/rl_menu_bind" android:paddingLeft="20dp" android:paddingTop="16dp" android:paddingRight="20dp" android:paddingBottom="16dp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textColor="@color/colorBlackFour" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="我的设备" android:layout_centerVertical="true"/>
+            <TextView android:textColor="@color/colorBlackFour" android:id="@+id/tv_device_num" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <View android:background="@color/item_line" android:layout_width="match_parent" android:layout_height="1dp"/>
+        <RelativeLayout android:orientation="horizontal" android:id="@+id/rl_update" android:paddingLeft="20dp" android:paddingTop="16dp" android:paddingRight="20dp" android:paddingBottom="16dp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textColor="@color/colorBlackFour" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="检查更新" android:layout_centerVertical="true"/>
+            <TextView android:textColor="@color/colorBlackFour" android:id="@+id/tv_version_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10dp" android:text="" android:layout_toLeftOf="@+id/iv_version_arrow" android:layout_centerVertical="true"/>
+            <View android:id="@+id/dot_setting_red_version" android:background="@drawable/icon_dot_red" android:visibility="gone" android:layout_width="10dp" android:layout_height="10dp" android:layout_marginRight="10dp" android:layout_toLeftOf="@+id/tv_version_name" android:layout_centerInParent="true"/>
+            <ImageView android:id="@+id/iv_version_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_right_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <View android:background="@color/item_line" android:layout_width="match_parent" android:layout_height="1dp"/>
+        <RelativeLayout android:orientation="horizontal" android:id="@+id/rl_user_logout" android:background="@drawable/common_bg_radius_yellow" android:paddingTop="12dp" android:paddingBottom="12dp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="33dp" android:layout_marginTop="44dp" android:layout_marginRight="33dp" android:layout_marginBottom="44dp">
+            <TextView android:textSize="15sp" android:textColor="@color/colorWhite" android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="切换账号/登录" android:layout_alignParentLeft="true" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:id="@+id/container" android:background="@color/colorWhite" android:layout_width="match_parent" android:layout_height="match_parent">
+    <FrameLayout android:id="@+id/fragments" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_above="@+id/ll_bottom_line"/>
+    <View android:id="@+id/ll_bottom_line" android:background="@color/item_line" android:layout_width="match_parent" android:layout_height="1dp" android:layout_above="@+id/ll_bottom"/>
+    <RelativeLayout android:orientation="vertical" android:id="@+id/ll_bottom" android:background="@color/colorWhite" android:layout_width="match_parent" android:layout_height="48dp" android:layout_alignParentBottom="true">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <RadioGroup android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/tabs" android:layout_width="match_parent" android:layout_height="48dp" android:layout_alignParentBottom="true">
+                <RadioButton android:id="@+id/tab_home_btn" android:checked="true" android:text="连接" android:drawableTop="@drawable/selector_tab_home" style="@style/MainTabItemStyle"/>
+                <RadioButton android:id="@+id/tab_store_btn" android:text="充值" android:drawableTop="@drawable/selector_tab_store" style="@style/MainTabItemStyle"/>
+                <RadioButton android:id="@+id/tab_my_btn" android:text="我的" android:drawableTop="@drawable/selector_tab_me" style="@style/MainTabItemStyle"/>
+            </RadioGroup>
+            <LinearLayout android:background="@android:color/transparent" android:layout_width="match_parent" android:layout_height="48dp" android:layout_alignParentBottom="true">
+                <View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.33"/>
+                <View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.35"/>
+                <View android:id="@+id/ll_view" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.32"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

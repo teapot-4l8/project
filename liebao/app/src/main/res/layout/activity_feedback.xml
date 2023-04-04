@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:background="@color/colorWhite" android:layout_width="match_parent" android:layout_height="match_parent">
+    <include layout="@layout/headerbar"/>
+    <View android:background="#f8f8f8" android:layout_width="match_parent" android:layout_height="5dp"/>
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="20dp">
+            <RadioGroup android:orientation="horizontal" android:id="@+id/radioGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp">
+                <RadioButton android:textSize="@dimen/sp_12" android:textColor="@color/bg_setting_fadeback_type_text" android:gravity="center" android:id="@+id/radioBtn_first" android:background="@drawable/bg_setting_fadeback_type" android:padding="10dp" android:focusable="true" android:layout_width="0dp" android:layout_height="match_parent" android:checked="true" android:button="@null" android:text="连接问题" android:layout_weight="1"/>
+                <RadioButton android:textSize="@dimen/sp_12" android:textColor="@color/bg_setting_fadeback_type_text" android:gravity="center" android:id="@+id/radioBtn_second" android:background="@drawable/bg_setting_fadeback_type" android:padding="10dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="20dp" android:button="@null" android:text="充值问题" android:layout_weight="1"/>
+            </RadioGroup>
+            <RadioGroup android:orientation="horizontal" android:id="@+id/radioGroup_two" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp">
+                <RadioButton android:textSize="@dimen/sp_12" android:textColor="@color/bg_setting_fadeback_type_text" android:gravity="center" android:id="@+id/radioBtn_third" android:background="@drawable/bg_setting_fadeback_type" android:padding="10dp" android:layout_width="0dp" android:layout_height="match_parent" android:button="@null" android:text="账号问题" android:layout_weight="1"/>
+                <RadioButton android:textSize="@dimen/sp_12" android:textColor="@color/bg_setting_fadeback_type_text" android:gravity="center" android:id="@+id/radioBtn_four" android:background="@drawable/bg_setting_fadeback_type" android:padding="10dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="20dp" android:button="@null" android:text="其它问题" android:layout_weight="1"/>
+            </RadioGroup>
+            <EditText android:textSize="@dimen/sp_12" android:textColor="@color/colorBlack" android:textColorHint="#b8bbbf" android:ellipsize="middle" android:gravity="top|left" android:id="@+id/et_content" android:background="@drawable/common_edittext_stroke" android:padding="15dp" android:layout_width="match_parent" android:layout_height="146dp" android:layout_marginTop="20dp" android:hint="请详细描述您的问题"/>
+            <EditText android:textSize="@dimen/sp_12" android:textColor="@color/colorBlack" android:textColorHint="#b8bbbf" android:ellipsize="middle" android:gravity="top|left" android:id="@+id/et_contact" android:background="@drawable/common_edittext_stroke" android:padding="15dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:hint="请输入联系人信息"/>
+            <ImageView android:id="@+id/iv_upload" android:layout_width="95dp" android:layout_height="95dp" android:layout_marginTop="20dp" android:src="@mipmap/ic_setting_fadeback_upload_img"/>
+            <Button android:textSize="15sp" android:textColor="@color/colorWhite" android:id="@+id/btn_commit" android:background="@drawable/common_bg_radius_yellow" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginTop="33dp" android:text="提交" style="?android:attr/borderlessButtonStyle"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

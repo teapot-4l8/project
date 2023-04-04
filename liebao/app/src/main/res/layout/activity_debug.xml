@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:id="@+id/debug_container" android:background="@color/colorWhite" android:layout_width="match_parent" android:layout_height="match_parent">
+    <FrameLayout android:id="@+id/debug_fragments" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_above="@+id/debug_ll_bottom"/>
+    <RelativeLayout android:orientation="vertical" android:id="@+id/debug_ll_bottom" android:background="#222333" android:layout_width="match_parent" android:layout_height="48dp" android:layout_alignParentBottom="true">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <RadioGroup android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/debug_tabs" android:layout_width="match_parent" android:layout_height="56dp" android:layout_alignParentBottom="true">
+                <RadioButton android:id="@+id/tab_debug_app" android:checked="true" android:text="App" android:drawableTop="@drawable/selector_tab_home" style="@style/MainTabItemStyle"/>
+                <RadioButton android:id="@+id/tab_debug_general" android:text="general" android:drawableTop="@drawable/selector_tab_me" style="@style/MainTabItemStyle"/>
+                <RadioButton android:id="@+id/tab_debug_routes" android:text="routes" android:drawableTop="@drawable/selector_tab_store" style="@style/MainTabItemStyle"/>
+                <RadioButton android:id="@+id/tab_debug_interfaces" android:text="intrerfaces" android:drawableTop="@drawable/selector_tab_me" style="@style/MainTabItemStyle"/>
+            </RadioGroup>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>
