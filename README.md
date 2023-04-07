@@ -64,7 +64,17 @@
 ```
 git add .
 git commit -m "first commit"
-git remote add origin https://github.com/xusong0621/CommandProject.git
 git push -u origin master
 ```
 
+参考
+
+https://github.com/qtfreet00/AntiFrida
+
+https://github.com/TUGOhost/anti_Android  这个涵盖了大部分的检测
+
+https://github.com/guanchao/AppProtect 加固方法
+
+https://blog.canyie.top/2021/05/01/anti-magisk-xposed/
+
+https://github.com/FlyingYu-Z/ApkEncryptor 有基本的检测  给app加签名和Dex加密
