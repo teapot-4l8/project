@@ -13,6 +13,7 @@
 - portecle-1.11 证书转化工具, p12 bks互转
 - cccrackjni  学习jni用的，有bug
 - liebao 用jadx反编译导出的gradle project 可以参考它的检测逻辑 最主要在so文件里
+- reverse 安全测试脚本
 - s5DaBai jni，我老师写的，没有bug，可以拿来参考。。。新加了很多检测
 - server_cert 服务端证书校验资料
 	- api 后端接口
@@ -46,20 +47,21 @@
 4.  java层实现xposed检测
 4.  java层实现bl锁检测
 4.  java层实现模拟器检测
+4.  so层实现root检测(github)
+9. so层实现frida检测(github)
+10. so层实现xposed检测(github)
+11. so层实现模拟器检测(github)
 
 ### 待实现：
 
 1. 完善java层协议加密
 2. 完善so层协议加密
-3. 代码混淆技术的学习
+3. 代码混淆技术的学习(可选)
 4. app加壳技术的学习(可选)
-5. so层实现root检测
-6. so层实现frida检测
-7. so层实现xposed检测
-8. so层实现bl锁检测
-8. so层实现模拟器检测
-9. 代理检测
-9. 签名校验
+5. so层实现bl锁检测
+6. 代理检测(refer to liebao)
+9. 签名校验(refer to liebao)
+9. sus app detect(magisk,kernelSU)
 
 ```
 git add .
@@ -77,4 +79,4 @@ https://github.com/guanchao/AppProtect 加固方法
 
 https://blog.canyie.top/2021/05/01/anti-magisk-xposed/
 
-https://github.com/FlyingYu-Z/ApkEncryptor 有基本的检测  给app加签名和Dex加密
+(可选) https://github.com/FlyingYu-Z/ApkEncryptor 有基本的检测  给app加签名和Dex加密
