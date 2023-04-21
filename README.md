@@ -14,7 +14,7 @@
 - cccrackjni  学习jni用的，有bug
 - liebao 用jadx反编译导出的gradle project 可以参考它的检测逻辑 最主要在so文件里
 - reverse 安全测试脚本
-- s5DaBai jni，我老师写的，没有bug，可以拿来参考。。。新加了很多检测
+- s5DaBai jni 没有bug，可以拿来参考。。。新加了环境检测
 - server_cert 服务端证书校验资料
 	- api 后端接口
 		- client 客户端证书
@@ -28,7 +28,7 @@
 	- NetDemoBks bks证书的demo
 	- NetDemoP12 P12证书的demo
 	- 服务端证书校验.md 参考过程，在比较后面
-- xiaoyuanwang 校园网一键登录，写着玩玩，用盗版chatGPT全程ctrl cv 无法运行。。。有时间研究一下后门 :
+- xiaoyuanwang 校园网一键登录，写着玩玩，用盗版chatGPT全程ctrl cv 无法运行。。。有时间研究一下后门 :)
 - AndroidDevelop.md demo0开发的参考过程 
 - jniDev.md s5DaBaik的开发流程
 - detectROOT.md 检测设备是否root的最简单的代码
@@ -47,21 +47,23 @@
 4.  java层实现xposed检测
 4.  java层实现bl锁检测
 4.  java层实现模拟器检测
-4.  so层实现root检测(github)
+4.  so层实现root检测(null)
 9. so层实现frida检测(github)
 10. so层实现xposed检测(github)
-11. so层实现模拟器检测(github)
+11. so层实现多开virtualApp检测(github)
+11. so层实现反内存dump(github)
 
 ### 待实现：
 
-1. 完善java层协议加密
-2. 完善so层协议加密
-3. 代码混淆技术的学习(可选)
-4. app加壳技术的学习(可选)
-5. so层实现bl锁检测
-6. 代理检测(refer to liebao)
-9. 签名校验(refer to liebao)
+1. 完善java层协议加密(使用逆向过的api接口，不搭后端。界面ui设计为纵向若干按钮，点击即可发送请求)
+2. 完善so层协议加密(12放一起)
+3. so层实现bl锁检测
+4. so层实现模拟器检测(refer to liebao)
+5. 代理检测(refer to liebao)
+6. 签名校验(refer to liebao)
 9. sus app detect(magisk,kernelSU)
+9. 代码混淆技术的学习(可选)
+9. app加壳技术的学习(可选)
 
 ```
 git add .
@@ -72,6 +74,8 @@ git push -u origin master
 参考
 
 https://github.com/qtfreet00/AntiFrida
+
+https://github.com/vvb2060/MagiskDetector/
 
 https://github.com/TUGOhost/anti_Android  这个涵盖了大部分的检测
 
