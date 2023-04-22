@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="che168">che168</string>
+    <string name="dewu">dewu</string>
+    <string name="reset">reset</string>
+    <string name="login">execute</string>
+    <string name="username">username:</string>
+    <string name="login_che">Login che</string>
 </resources>
