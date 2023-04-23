@@ -33,6 +33,13 @@
             android:name=".MainactivityCZY"
             android:exported="true">
         </activity>
+
+        <activity
+            android:name=".MainactivityDW"
+            android:exported="true">
+        </activity>
+
+
     </application>
 
 </manifest>

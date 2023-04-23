@@ -1,5 +1,6 @@
 package Util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -7,14 +8,16 @@ import android.util.Log;
 
 import Util.jni.AHAPIHelper;
 
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESedeKeySpec;
 import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
 public class SecurityUtil {
 
@@ -46,6 +49,20 @@ public class SecurityUtil {
         }
     }
 
+    public static String md5(byte[] dataBytes) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(dataBytes);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < messageDigest.length; i++) {
+                sb.append(Integer.toString((messageDigest[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static String encode3Des(Context context, String str) {
         Log.e("[*]encode3Des->", str);
         String desKey = AHAPIHelper.getDesKey(context);
@@ -60,10 +77,10 @@ public class SecurityUtil {
             bArr = cipher.doFinal(str.getBytes("UTF-8"));
         } catch (Exception unused) {
         }
-        return encode(bArr);
+        return encode2string(bArr);
     }
 
-    private static String encode(byte[] bArr) {
+    public static String encode2string(byte[] bArr) {
         return Base64.encodeToString(bArr, Base64.DEFAULT);
     }
 

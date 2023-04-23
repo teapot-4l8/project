@@ -4,8 +4,6 @@ import Util.SecurityUtil;
 import Util.Domain;
 import Util.AppUtils;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,12 +13,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.util.Map;
-import java.util.Objects;
 import java.util.TreeMap;
 
 import Util.SignManager;
+import Util.ToastUtils;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -137,14 +136,27 @@ public class MainactivityCZY extends AppCompatActivity {
                 ResponseBody body = res.body();
                 String dataString = body.string();
                 Log.e("[*]receive->", dataString);
+                ToastUtils.show(MainactivityCZY.this, parse(dataString));
             } catch (Exception e) {
                 // getApplicationContext()是一个Context类的方法，它用于获取当前应用程序的上下文
-                Toast.makeText(getApplicationContext(), "登录失败", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "网络请求异常", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
         }).start();
 
     }
 
+    private String parse(String dataString) {
+        JSONObject responseJson = null;
+        try {
+            responseJson = new JSONObject(dataString);
+            String message = responseJson.getString("message");
+            Log.e("message", message);
+            return message;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "message not found";
+    }
 
 }
