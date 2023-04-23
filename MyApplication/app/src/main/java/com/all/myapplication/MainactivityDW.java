@@ -60,7 +60,7 @@ public class MainactivityDW extends AppCompatActivity {
 //        String comments = Grab_comments(xAuthToken);
         Grab_comments(xAuthToken); // 获取评论数据
     }
-
+    // TODO: 解决一下这个问题。似乎可以用回调函数
     private String Get_x_auth_token() {
         TreeMap<String, String> map = new TreeMap<>();
         map.put("platform", "android");
