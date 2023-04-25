@@ -39,6 +39,15 @@
             android:exported="true">
         </activity>
 
+        <activity android:name=".MainActivityBilibili"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".MainActivityTest"
+            android:exported="true" >
+        </activity>
+
 
     </application>
 

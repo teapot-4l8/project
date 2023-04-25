@@ -6,4 +6,7 @@
     <string name="login">execute</string>
     <string name="username">username:</string>
     <string name="login_che">Login che</string>
+    <string name="b_play">B_play</string>
+    <string name="test">test</string>
+    <string name="environment_detector">environment detector</string>
 </resources>

@@ -1,2 +1,4 @@
-package Util;public class RequestUtil {
+package Util;
+
+public class RequestUtil {
 }

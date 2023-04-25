@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ActivityMainBinding binding;
-    private Button btnCZY, btnDW;
+    private Button btnCZY, btnDW, btnBplay, btnTEST;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         btnCZY = findViewById(R.id.chezhiying);
         btnDW = findViewById(R.id.dw);
+        btnBplay = findViewById(R.id.Bplay);
+        btnTEST = findViewById(R.id.test);
     }
 
     private void initListener() {
@@ -51,6 +53,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainactivityDW.class);
+                startActivity(intent);
+            }
+        });
+        btnBplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainActivityBilibili.class);
+                startActivity(intent);
+            }
+        });
+        btnTEST.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainActivityTest.class);
                 startActivity(intent);
             }
         });

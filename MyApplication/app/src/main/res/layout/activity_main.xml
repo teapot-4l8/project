@@ -15,14 +15,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="10"
-            android:background="#dddddd">
+            android:background="#DFF8C1">
 
             <Button
                 android:id="@+id/chezhiying"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="2"
+                android:backgroundTint="#770B0B"
                 android:text="@string/che168"
                 android:layout_margin="16dp"/>
 
@@ -31,31 +31,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="2"
+                android:backgroundTint="#3A0404"
                 android:text="@string/dewu"
                 android:layout_margin="16dp"/>
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/Bplay"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="2"
-                android:text="Button 3"
+                android:backgroundTint="#A5247A"
+                android:text="@string/b_play"
                 android:layout_margin="16dp"/>
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/test"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="2"
-                android:text="Button 4"
+                android:text="@string/test"
                 android:layout_margin="16dp"/>
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/envDec"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="2"
-                android:text="Button 5"
+                android:backgroundTint="#03556A"
+                android:text="@string/environment_detector"
                 android:layout_margin="16dp"/>
 
             <Button
