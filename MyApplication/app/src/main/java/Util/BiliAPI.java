@@ -1,5 +1,6 @@
 package Util;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -18,6 +19,7 @@ public class BiliAPI {
     }
 
     public static void getVideoIdInfo(String bvid, VideoIdInfoCallback callback) {
+        Log.e("[*] bvid ->", bvid);
         new Thread(() -> {
             OkHttpClient client = new OkHttpClient();
 //            String bvid = execUrl.substring(execUrl.lastIndexOf("/") + 1);

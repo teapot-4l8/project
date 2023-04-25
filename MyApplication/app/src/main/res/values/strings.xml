@@ -9,4 +9,5 @@
     <string name="b_play">B_play</string>
     <string name="test">test</string>
     <string name="environment_detector">environment detector</string>
+    <string name="execute">execute/refresh</string>
 </resources>

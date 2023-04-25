@@ -51,7 +51,7 @@ public class MainActivityBilibili extends AppCompatActivity {
     }
 
     private String getBvid() {
-        return String.valueOf(txtbvid);
+        return String.valueOf(txtbvid.getText());
     }
 
     private void initVideoInfo (String bvid) throws JSONException, IOException {
@@ -59,11 +59,28 @@ public class MainActivityBilibili extends AppCompatActivity {
             @Override
             public void onResult(String[] result) {
                 // Use result here
-                StringBuilder builder = new StringBuilder();
-                for (String info : result) {
-                    builder.append(info).append("\n");
-                }
-                Log.e("[*B]", String.valueOf(builder));
+                String aid = result[0];
+                String bvid = result[1];
+                String cid = result[2];
+                String duration = result[3];
+                String view_count = result[4];
+                Log.e("[*B]--", aid);
+                Log.e("[*B]", bvid);
+                Log.e("[*B]", cid);
+                Log.e("[*B]", duration);
+                Log.e("[*B]--", view_count);
+
+                // Use the variables here
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView textView = findViewById(R.id.textView);
+                        textView.setText("aid: " + aid + "\nbvid: " + bvid + "\ncid: " + cid + "\nduration: " + duration + "\nview_count: " + view_count);
+                    }
+                });
+
+
+
             }
         });
     }
