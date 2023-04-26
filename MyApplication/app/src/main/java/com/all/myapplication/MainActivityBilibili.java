@@ -20,6 +20,7 @@ import Util.BiliAPI;
 public class MainActivityBilibili extends AppCompatActivity {
     private Button btnBvid;
     private EditText txtbvid;
+    public String aid, cid, bvid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +40,12 @@ public class MainActivityBilibili extends AppCompatActivity {
         btnBvid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String bvid = getBvid();
                 try {
                     initVideoInfo(bvid);
+                    BiliAPI api = new BiliAPI();
+                    byte[] bytes = api.str2byteenc(aid, cid);
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
@@ -59,9 +63,9 @@ public class MainActivityBilibili extends AppCompatActivity {
             @Override
             public void onResult(String[] result) {
                 // Use result here
-                String aid = result[0];
+                aid = result[0];
                 String bvid = result[1];
-                String cid = result[2];
+                cid = result[2];
                 String duration = result[3];
                 String view_count = result[4];
                 Log.e("[*B]--", aid);
@@ -78,11 +82,12 @@ public class MainActivityBilibili extends AppCompatActivity {
                         textView.setText("aid: " + aid + "\nbvid: " + bvid + "\ncid: " + cid + "\nduration: " + duration + "\nview_count: " + view_count);
                     }
                 });
-
-
-
             }
         });
+    }
+
+    private void play_vedio(String bvid) {
+
     }
 
 }
