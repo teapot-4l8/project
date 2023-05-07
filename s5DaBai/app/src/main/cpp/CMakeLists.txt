@@ -31,7 +31,8 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        dym.c )
+        dym.c
+        newmd5.c)
 
 add_library( # Sets the name of the library.
         utils

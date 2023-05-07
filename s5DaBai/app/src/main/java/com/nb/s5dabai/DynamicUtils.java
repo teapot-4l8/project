@@ -6,4 +6,5 @@ class DynamicUtils {
     }
 
     public static native String ssss(int v1, int v2);
+    public static native String dymMD5(String input);
 }

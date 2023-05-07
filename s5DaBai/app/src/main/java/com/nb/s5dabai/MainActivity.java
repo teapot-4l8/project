@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         String result = Advancedmd5.encrypt("123456");
         System.out.println("[*]" + result);
 
+        String dynamicres = DynamicUtils.dymMD5("123456");
+        System.out.println("[*]DYM[*]" + dynamicres);
 
         /*
         // 检测手机是否被 root
