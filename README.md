@@ -4,14 +4,14 @@
 
 ```
 - assets 存放md文件的图片
-- algorithm s
+- algorithm 改良算法 
 - back 后端
 	- cert 服务端和客户端证书的备份
 	- app.py 废了
 	- test.py 测试用 有两个接口 分别对应Mainactivity1/2用的api
 - demo0 包含两个登录页面 MainActivity用okhttp3传输, MainActivity2用的是retrofit.暂时没有bug
 原先是从空白文件建立的，不知道怎么配置c++环境。后期要重新建立一个c++项目再把主要代码迁移过去
-- My Application 成品xi
+- My Application 成品c
 - portecle-1.11 证书转化工具, p12 bks互转
 - cccrackjni  学习jni用的，有bug
 - liebao 用jadx反编译导出的gradle project 可以参考它的检测逻辑 最主要在so文件里

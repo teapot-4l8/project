@@ -21,16 +21,6 @@ public class BiliAPI {
         void onResult(String[] result);
     }
 
-    Interceptor reportClick = new Interceptor() {
-        @NonNull
-        @Override
-        public Response intercept(@NonNull Chain chain) throws IOException {
-            // enc here?
-            Request request = chain.request().newBuilder().build();
-            Response response = chain.proceed(request);
-            return response;
-        }
-    };
 
     public static void getVideoIdInfo(String bvid, VideoIdInfoCallback callback) {
         Log.e("[*] bvid ->", bvid);

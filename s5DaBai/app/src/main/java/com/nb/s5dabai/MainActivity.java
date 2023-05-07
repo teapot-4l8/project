@@ -16,6 +16,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final String TAG = "MainActivity";
+
+        String result = Advancedmd5.encrypt("123456");
+        System.out.println("[*]" + result);
+
+
+        /*
         // 检测手机是否被 root
         if (DeviceUtils.isDeviceRooted1()) {
             Toast.makeText(this, "法一检测到设备已被root", Toast.LENGTH_SHORT).show();
@@ -61,8 +67,10 @@ public class MainActivity extends AppCompatActivity {
             Log.e(TAG, "法二未检测到bl解锁");
             // TODO: 继续应用正常启动流程
         }
+        */
 
 
+        /*
         // Example of a call to a native method
         TextView tv = findViewById(R.id.sample_text);
 
@@ -86,5 +94,6 @@ public class MainActivity extends AppCompatActivity {
         // 动态注册
         String value = DynamicUtils.ssss(11,22);
         Log.e("---->", value); //  rwxt
+        */
     }
 }
