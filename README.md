@@ -44,7 +44,7 @@
 
 1. 服务端证书校验
 2. 客户端证书校验
-3. java层http非常简单的sign加密
+3. java层和so层sign加密和原创参数加密流程
 4.  java层实现root检测
 4.  java层实现xposed检测
 4.  java层实现bl锁检测
