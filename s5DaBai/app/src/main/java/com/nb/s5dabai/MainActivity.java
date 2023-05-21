@@ -1,18 +1,26 @@
 package com.nb.s5dabai;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.nb.s5dabai.Utils.DexHashChecker;
 import com.nb.s5dabai.Utils.EmulatorDetectUtil;  // Import statement for EmulatorDetectUtil class in Utils package.
 
+import android.Manifest;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -21,7 +29,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final String TAG = "MainActivity";
+        /*
+        String filename = "myfile.txt";
+        String fileContents = "Hello world!";
+        FileOutputStream outputStream;
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_GRANTED) {
+            try {
+                File file = new File(Environment.getExternalStorageDirectory(), filename);
+                outputStream = new FileOutputStream(file);
+                outputStream.write(fileContents.getBytes());
+                outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            // Request permission from the user
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+        }
+        */
         // TODO: bug not found remember to uncomment them :)
 /*
         String result = Advancedmd5.encrypt("123456");

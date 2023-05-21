@@ -102,3 +102,52 @@ Here, `context` is an instance of an Android Context object. We get a `PackageMa
 Once you have the APK path, you can pass it to a function to generate a hash value for the APK file using SHA-256 or another hash function.
 
 Note that this code will not work outside of an Android app context, for example in a standalone Java program running on a desktop machine. In that case, you would need to obtain the APK path in a different way, such as manually specifying the path or using a file chooser dialog to allow the user to select the APK file.
+
+To save the `expectedHash` value to a file, you can use the built-in Java file I/O functionality to write the value to a text file. Here's an example of how to do it:
+
+```java
+String expectedHash = "1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p";
+String filePath = "path/to/expectedHash.txt";
+
+try {
+    // Create a FileWriter object to write the expectedHash value to a file
+    FileWriter writer = new FileWriter(filePath);
+    writer.write(expectedHash);
+    writer.close();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+In this example, we create a `String` object called `expectedHash` that contains the hash value we want to save. We then define a `String` object called `filePath` that specifies the location where we want to save the `expectedHash` value. You can adjust this path to a location and file name that makes sense for your use case.
+
+We then create a `FileWriter` object to write the `expectedHash` value to the file. The `write()` method of the `FileWriter` object writes the `expectedHash` value to the file, and the `close()` method closes the file writer and frees up any resources used by it. Note that we are using a try-catch block to handle any possible exceptions that may occur during the file I/O process.
+
+To read the `expectedHash` value from the file later, you can use the built-in Java file I/O functionality to read the value from the text file. Here's an example of how to do it:
+
+```java
+String filePath = "path/to/expectedHash.txt";
+
+try {
+    // Create a FileReader object to read the expectedHash value from the file
+    FileReader reader = new FileReader(filePath);
+    BufferedReader bufferedReader = new BufferedReader(reader);
+
+    // Read the expectedHash value from the file and store it in a variable
+    String expectedHash = bufferedReader.readLine();
+
+    // Close the file reader and free up any resources used by it
+    bufferedReader.close();
+    reader.close();
+
+    // Do something with the expectedHash value
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+In this example, we create a `String` object called `filePath` that specifies the location of the file where the `expectedHash` value is saved. We then create a `FileReader` object to read the `expectedHash` value from the file. We also create a `BufferedReader` object to read the file data line by line.
+
+We then read the `expectedHash` value from the file using the `readLine()` method of the `BufferedReader` object. The `expectedHash` value is stored in a `String` variable called `expectedHash`.
+
+After we have read the `expectedHash` value, we close the `BufferedReader` and `FileReader` objects to free up any resources used by them. You can then use the `expectedHash` value in any other parts of your code that require it.
