@@ -9,14 +9,18 @@
 	- cert 服务端和客户端证书的备份
 	- app.py 废了
 	- test.py 测试用 有两个接口 分别对应Mainactivity1/2用的api
+	
 - demo0 包含两个登录页面 MainActivity用okhttp3传输, MainActivity2用的是retrofit.暂时没有bug
-原先是从空白文件建立的，不知道怎么配置c++环境。后期要重新建立一个c++项目再把主要代码迁移过去
-- My Application 成品c
+原先是从空白文件建立的，不知道怎么配置c++环境。后期要重新建立一个c++项目再把主要代码迁移过去 PPT示例之一
+- My Application 成品雏形  PPT示例之一
+
 - portecle-1.11 证书转化工具, p12 bks互转
 - cccrackjni  学习jni用的，有bug
 - liebao 用jadx反编译导出的gradle project 可以参考它的检测逻辑 最主要在so文件里
 - reverse 安全测试脚本
-- s5DaBai jni 没有bug，可以拿来参考。。。新加了环境检测
+
+- s5DaBai jni 没有bug，可以拿来参考。。。新加了环境检测 PPT示例之一
+
 - server_cert 服务端证书校验资料
 	- api 后端接口
 		- client 客户端证书
@@ -45,14 +49,15 @@
 1. 服务端证书校验
 2. 客户端证书校验
 3. java层和so层sign加密和原创参数加密流程
-4.  java层实现root检测
-4.  java层实现xposed检测
-4.  java层实现bl锁检测
-4.  java层实现模拟器检测
-4.  so层实现root检测(null)
-9. so层实现frida检测(github)
-10. so层实现xposed检测(github)
-11. so层实现多开virtualApp检测(github)
+4. java层实现root检测
+5. java层实现xposed检测
+6. java层实现bl锁检测
+7. java层实现模拟器检测
+8. java层实现代理检测(refer to liebao)
+9. so层实现root检测(null)
+10. so层实现frida检测(github)
+11. so层实现xposed检测(github)
+12. so层实现多开virtualApp检测(github)
 11. so层实现反内存dump(github)
 
 ### 待实现：
@@ -61,8 +66,7 @@
 2. 完善so层协议加密(12放一起)
 3. so层实现bl锁检测
 4. so层实现模拟器检测(refer to liebao)
-5. 代理检测(refer to liebao)
-6. 签名校验(refer to liebao)
+5. 签名校验(refer to liebao)
 9. sus app detect(magisk,kernelSU)
 9. 代码混淆技术的学习(可选)
 9. app加壳技术的学习(可选)

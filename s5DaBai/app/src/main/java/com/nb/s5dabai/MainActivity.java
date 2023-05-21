@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         String dynamicres = DynamicUtils.dymMD5("123456");
         System.out.println("[*]DYM[*]" + dynamicres);
 
+        boolean useProxy = DeviceUtils.proxyDetector(MainActivity.this);
+        System.out.println("[*] if use proxy ->" + useProxy);
         /*
         // 检测手机是否被 root
         if (DeviceUtils.isDeviceRooted1()) {

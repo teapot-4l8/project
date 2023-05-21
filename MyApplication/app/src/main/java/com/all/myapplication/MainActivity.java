@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import Util.RequestUtil;
 
 import com.all.myapplication.databinding.ActivityMainBinding;
 
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
         initListener();
+
+        boolean hasproxy = RequestUtil.hasproxy(MainActivity.this);
+        System.out.println("[*] if use proxy ->" + hasproxy);
     }
 
     private void initView() {
@@ -71,11 +75,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-    /**
-     * A native method that is implemented by the 'myapplication' native library,
-     * which is packaged with this application.
-     */
-    public native String stringFromJNI();
 }
