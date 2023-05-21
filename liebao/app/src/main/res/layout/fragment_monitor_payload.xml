@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:background="@color/rootBg" android:scrollbars="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
-    <LinearLayout android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <TextView android:id="@+id/tvHeaders" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/monitor.TextAppearance.Value"/>
-        <TextView android:id="@+id/tvBody" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/monitor.TextAppearance.Value"/>
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>

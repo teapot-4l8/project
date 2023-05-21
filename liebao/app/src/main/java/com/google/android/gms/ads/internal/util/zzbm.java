@@ -1,9 +1,0 @@
-package com.google.android.gms.ads.internal.util;
-
-import android.util.JsonWriter;
-
-/* compiled from: com.google.android.gms:play-services-ads@@19.8.0 */
-/* loaded from: classes.dex */
-public interface zzbm {
-    void zza(JsonWriter jsonWriter);
-}

@@ -36,6 +36,8 @@ public class DexHashChecker {
 
 该代码使用SHA-256算法计算dex文件的哈希值，并将其与预先存储在SERVER_HASH常量中的哈希值进行比较。如果两者相同，则返回true，否则返回false。注意，该代码需要在应用运行时才能执行，因此最好将其封装成一个单独的类或方法，并在需要检测时调用。
 
+## 生成code
+
 You can generate a hash value for an app's APK file programmatically using Java or Kotlin by following these steps:
 
 1. Load the APK file into a FileInputStream object:
@@ -103,6 +105,8 @@ Once you have the APK path, you can pass it to a function to generate a hash val
 
 Note that this code will not work outside of an Android app context, for example in a standalone Java program running on a desktop machine. In that case, you would need to obtain the APK path in a different way, such as manually specifying the path or using a file chooser dialog to allow the user to select the APK file.
 
+## 保存文件
+
 To save the `expectedHash` value to a file, you can use the built-in Java file I/O functionality to write the value to a text file. Here's an example of how to do it:
 
 ```java
@@ -122,6 +126,8 @@ try {
 In this example, we create a `String` object called `expectedHash` that contains the hash value we want to save. We then define a `String` object called `filePath` that specifies the location where we want to save the `expectedHash` value. You can adjust this path to a location and file name that makes sense for your use case.
 
 We then create a `FileWriter` object to write the `expectedHash` value to the file. The `write()` method of the `FileWriter` object writes the `expectedHash` value to the file, and the `close()` method closes the file writer and frees up any resources used by it. Note that we are using a try-catch block to handle any possible exceptions that may occur during the file I/O process.
+
+## 读取文件
 
 To read the `expectedHash` value from the file later, you can use the built-in Java file I/O functionality to read the value from the text file. Here's an example of how to do it:
 
@@ -151,3 +157,48 @@ In this example, we create a `String` object called `filePath` that specifies th
 We then read the `expectedHash` value from the file using the `readLine()` method of the `BufferedReader` object. The `expectedHash` value is stored in a `String` variable called `expectedHash`.
 
 After we have read the `expectedHash` value, we close the `BufferedReader` and `FileReader` objects to free up any resources used by them. You can then use the `expectedHash` value in any other parts of your code that require it.
+
+## 文件读写无权限错误
+
+This error indicates that your app does not have the necessary permissions to write to external storage on the device. To fix this error, you need to update your app's manifest file to request the necessary permissions.
+
+To request permissions to write to external storage, follow these steps:
+
+1. Open your app's manifest file (`AndroidManifest.xml`) in your Android Studio project.
+
+2. Add the necessary permissions to your file. In this case, you need to add the `WRITE_EXTERNAL_STORAGE` permission to allow your app to write to external storage. Here's an example:
+
+   ```
+   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+   ```
+
+   You can add this line either inside the `<manifest>` element or inside the `<application>` element, depending on your specific use case.
+
+3. Save your changes to the `AndroidManifest.xml` file.
+
+### 安卓10以上解决方法
+
+Note that starting from Android 10 (API level 29), you need to request runtime permissions to access external storage. To do this, you can use the `ActivityCompat.requestPermissions()` method with `Manifest.permission.WRITE_EXTERNAL_STORAGE` as the permission you are requesting. 
+
+If you are targeting devices that run Android 10 or later, you also need to declare the ` requestLegacyExternalStorage` attribute in the `application` tag of your manifest file and set its value to `true`. Like this:
+
+ ```
+<application
+      android:icon="@mipmap/ic_launcher"
+      android:label="@string/app_name"
+      android:requestLegacyExternalStorage="true">
+
+      <activity
+          android:name=".MainActivity"
+          android:label="@string/app_name">
+
+          <!-- Your activity content -->
+
+      </activity>
+
+      <!-- Other application components -->
+
+</application>
+ ```
+
+With these changes, your app should now be able to write to external storage on the device.

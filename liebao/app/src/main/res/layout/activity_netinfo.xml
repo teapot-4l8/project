@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:background="#55cccccc" android:layout_width="match_parent" android:layout_height="match_parent">
-    <EditText android:textSize="16sp" android:textColor="#ff333333" android:textColorHint="#ffb0b0b0" android:gravity="top" android:id="@+id/main_activity_et_input" android:background="#ffffff" android:padding="10dp" android:scrollbars="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="170dp" android:hint="请输入网址" android:inputType="textUri" android:textCursorDrawable="@null" app:layout_constraintLeft_toLeftOf="0" app:layout_constraintRight_toRightOf="0" app:layout_constraintTop_toTopOf="0"/>
-    <Button android:textSize="16sp" android:textColor="#ffffff" android:id="@+id/start_btn" android:background="@color/colorBlack" android:layout_width="match_parent" android:layout_height="48dp" android:text="开始诊断"/>
-    <Button android:textSize="16sp" android:textColor="#ffffff" android:id="@+id/start_routes" android:background="@color/colorBlack" android:layout_width="match_parent" android:layout_height="48dp" android:text="Routes"/>
-    <Button android:textSize="16sp" android:textColor="#ffffff" android:id="@+id/start_interfaces" android:background="@color/colorBlack" android:layout_width="match_parent" android:layout_height="48dp" android:text="Interfaces"/>
-</LinearLayout>
