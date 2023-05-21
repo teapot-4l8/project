@@ -58,17 +58,17 @@
 10. so层实现frida检测(github)
 11. so层实现xposed检测(github)
 12. so层实现多开virtualApp检测(github)
-11. so层实现反内存dump(github)
+13. so层实现反内存dump(github)
+14. so层实现模拟器检测(refer to liebao) 原理是检测屏幕宽度而已，也有检测有没有手机厂商的 没有太大意义
+15. 签名校验  (半成品 签名值需要写在本地或服务器 本地的需要加密)
 
 ### 待实现：
 
 1. 完善java层协议加密(使用逆向过的api接口，不搭后端。界面ui设计为纵向若干按钮，点击即可发送请求)
 2. 完善so层协议加密(12放一起)
 3. so层实现bl锁检测
-4. so层实现模拟器检测(refer to liebao)
-5. 签名校验(refer to liebao)
-9. sus app detect(magisk,kernelSU)
-9. 代码混淆技术的学习(可选)
+4. sus app detect(magisk,kernelSU)
+5. 代码混淆技术的学习(可选)
 9. app加壳技术的学习(可选)
 
 ```

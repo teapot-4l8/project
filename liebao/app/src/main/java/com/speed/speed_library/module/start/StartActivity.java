@@ -86,7 +86,8 @@ public final class StartActivity extends com.speed.speed_library.a.a {
             f.a(getResources().getString(R.string.toast_app_fail) + "!", 0, 2, null);
         } else {
             if (g.f5610b.t() == null || g.f5610b.ac() == 1) {
-                if (NativeDetect.detectXposed(Process.myPid())) { // 检测xposed是否在运行 false
+                if (NativeDetect.detectXposed(Process.myPid())) { // 检测xposed是否在运行 false 这段代码
+                    // 有问题 应该只是检测了固定的xposed 模块包名 没有检测xposed本身
                     g.f5610b.ab();
                     f.a(getResources().getString(R.string.toast_app_fail) + ";", 0, 2, null);
                     return;

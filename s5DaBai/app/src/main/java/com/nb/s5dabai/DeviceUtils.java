@@ -13,6 +13,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 class DeviceUtils {
+    static {
+        System.loadLibrary("enc");
+    }
+
     public static boolean isDeviceRooted1() {
         Process process = null;
         try {
@@ -45,7 +49,6 @@ class DeviceUtils {
         return false;
     }
 
-
     public static boolean isBootloaderUnlocked1() {
         String bootloader = android.os.Build.BOOTLOADER;
         if (bootloader != null && bootloader.toLowerCase().contains("unlocked")) {
@@ -75,8 +78,6 @@ class DeviceUtils {
         return new File(xposedBridgePath).exists();
     }
 
-
-
     public static boolean proxyDetector(Context context) {
         int port;
         String str;
@@ -98,5 +99,7 @@ class DeviceUtils {
         }
         return (TextUtils.isEmpty(str) || port == -1) ? false : true;
     }
-        
+
+    public static native int EmulatorDetectUtil();
+
 }

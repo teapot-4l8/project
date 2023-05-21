@@ -21,3 +21,4 @@ Java_com_nb_s5dabai_Advancedmd5_encrypt(JNIEnv *env, jclass clazz, jstring str) 
 
     return (*env)->NewStringUTF(env, result);
 }
+

@@ -2,8 +2,13 @@ package com.nb.s5dabai;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.nb.s5dabai.Utils.EmulatorDetectUtil;  // Import statement for EmulatorDetectUtil class in Utils package. 
+import com.nb.s5dabai.Utils.DexHashChecker;
+import com.nb.s5dabai.Utils.EmulatorDetectUtil;  // Import statement for EmulatorDetectUtil class in Utils package.
 
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -17,14 +22,39 @@ public class MainActivity extends AppCompatActivity {
 
         final String TAG = "MainActivity";
 
+        // TODO: bug not found remember to uncomment them :)
+/*
         String result = Advancedmd5.encrypt("123456");
         System.out.println("[*]" + result);
+        Log.e("[*]", result);
+
 
         String dynamicres = DynamicUtils.dymMD5("123456");
         System.out.println("[*]DYM[*]" + dynamicres);
+        Log.e("[*]DYM[*]", dynamicres);
 
         boolean useProxy = DeviceUtils.proxyDetector(MainActivity.this);
         System.out.println("[*] if use proxy ->" + useProxy);
+        Log.e("[*] if use proxy ->", String.valueOf(useProxy));
+*/
+
+        Context context = getApplicationContext();
+        PackageManager packageManager = MainActivity.this.getPackageManager();
+        String packageName = context.getPackageName();
+        try {
+            PackageInfo packageInfo = packageManager.getPackageInfo(packageName, 0);
+            ApplicationInfo applicationInfo = packageInfo.applicationInfo;
+            String apkPath = applicationInfo.sourceDir;
+            // Do something with the APK path
+//        8709678734adad10f1cec23c26d9f1eb50ab66252b379a7965aa52430ab451ff
+//        76f50a566360b0fa1f7412ffafae3777391ac299065bf3633b71bbaec51a69d3
+            boolean haschange = DexHashChecker.isDexHashValid(apkPath);
+            System.out.println("[*] if current hash code equals the origin " + haschange);
+            Log.e("[*] if equals", String.valueOf(haschange));
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
         /*
         // 检测手机是否被 root
         if (DeviceUtils.isDeviceRooted1()) {
@@ -73,7 +103,10 @@ public class MainActivity extends AppCompatActivity {
         }
         */
 
-
+        /* these code has some error
+        int isemulator = DeviceUtils.EmulatorDetectUtil();
+        System.out.println("[*] is emulator ->" + isemulator);
+        */
         /*
         // Example of a call to a native method
         TextView tv = findViewById(R.id.sample_text);
