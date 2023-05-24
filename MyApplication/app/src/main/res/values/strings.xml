@@ -10,4 +10,5 @@
     <string name="test">test</string>
     <string name="environment_detector">environment detector</string>
     <string name="execute">execute/refresh</string>
+    <string name="vipshop">vipshop</string>
 </resources>

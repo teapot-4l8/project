@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ActivityMainBinding binding;
-    private Button btnCZY, btnDW, btnBplay, btnTEST;
+    private Button btnCZY, btnDW, btnBplay, btnTEST, btnVipShop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         btnDW = findViewById(R.id.dw);
         btnBplay = findViewById(R.id.Bplay);
         btnTEST = findViewById(R.id.test);
+        btnVipShop = findViewById(R.id.vipshop);
     }
 
     private void initListener() {
@@ -74,5 +75,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnVipShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainActivityWPH.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
