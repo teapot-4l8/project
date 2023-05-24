@@ -1,52 +1,36 @@
 package com.all.myapplication;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.gson.Gson;
 import java.nio.charset.StandardCharsets;
-import org.json.JSONArray;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.Proxy;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
-import java.util.TreeMap;
 import java.util.UUID;
-
-import Util.AppUtils;
-import Util.Domain;
-import Util.SecurityUtil;
-import Util.jni.AHAPIHelper;
+import java.util.*;
+import Util.AesEncryptUtil;
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
 
 /*
 Sure! Another way to achieve this is to use a `Handler` and `Runnable`.
@@ -110,13 +94,12 @@ public class MainActivityTest extends AppCompatActivity {
     String device_token = mars_cid;
 //    String did = "123456";
     String android_id = generate_android_id();
+    String salt = "aee4c425dbb2288b80c71347cc37d04b";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-
-
         getVspToken(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -128,12 +111,13 @@ public class MainActivityTest extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
+//                        System.out.println("[*] jsonObject->"+jsonObject);
                         JSONObject dataObject = jsonObject.getJSONObject("data");
-                        String vspToken = dataObject.getString("vspToken");
-                        System.out.println(vspToken);
-                        String did = generate_did(vspToken);
-                        sendReq(did);
-                    } catch (JSONException e) {
+                        String vspToken = dataObject.getString("vcspToken");
+                        System.out.println("[*] vspToken->"+vspToken);
+                        generate_did(vspToken);
+//                        sendReq(did);
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 } else {
@@ -141,8 +125,6 @@ public class MainActivityTest extends AppCompatActivity {
                 }
             }
         });
-
-
 
     }
 
@@ -254,7 +236,7 @@ public class MainActivityTest extends AppCompatActivity {
         }).start();
     }
 
-    private String generate_did(String vcspToken) throws UnsupportedEncodingException {
+    private void generate_did(String vcspToken) throws Exception {
         String ah1 = "";
         String ah2 = "";
         String ah3 = "";
@@ -312,41 +294,63 @@ public class MainActivityTest extends AppCompatActivity {
         String body = bodyBuilder.toString();
         body = body.substring(0, body.length() - 1); // remove the last '&'
 
+        System.out.println("[*] body->"+body);
+
         String iv = "";
         for (int i = 0; i < 16; i++) {
             iv += Integer.toHexString((int) (Math.random() * 16));
         }
+        System.out.println("[*] iv->"+iv);
 
-        // TODO: 转化有问题
-        String salt = "aee4c425dbb2288b80c71347cc37d04b";
-        String sha1Body1 = sha1(salt + body);
-        String sha1Body2 = sha1(salt + sha1Body1);
+        String key = "aee4c425dbb2288b80c71347cc37d04b";
+        String data = body;
 
-        String apiKey = api_key;
-        String skey = "6692c461c3810ab150c9a980d0c275ec";
-        long timestamp = System.currentTimeMillis() / 1000L;
-        String data = String.format("{\"api_key\":\"%s\",\"did\":\"\",\"edata\":\"%s\",\"eversion\":\"0\",\"skey\":\"%s\",\"timestamp\":%d}", apiKey, encrypt(salt, sha1Body2, iv, body), skey, timestamp);
+        String encryptedData = AesEncryptUtil.encrypt(data, key, iv);
+        System.out.println("[*] edata->"+encryptedData);
+
+        Map<String, String> body_dict = new HashMap<>();
+        body_dict.put("api_key", api_key);
+        body_dict.put("did", "");
+        body_dict.put("edata", encryptedData);
+        body_dict.put("eversion", "0");
+        body_dict.put("skey", "6692c461c3810ab150c9a980d0c275ec");
+        body_dict.put("timestamp", String.valueOf(Instant.now().getEpochSecond()));
+
+        List<String> keys2 = new ArrayList<>(body_dict.keySet());
+        Collections.sort(keys2);
+
+        StringBuilder body_string_builder = new StringBuilder();
+        for (String key2 : keys2) {
+            body_string_builder.append(key2).append("=").append(body_dict.get(key2)).append("&");
+        }
+        String body_string = body_string_builder.toString();
+        body_string = body_string.substring(0, body_string.length() - 1);
+
+        String tmp = sha1(salt + body_string);
+        System.out.println("[*] tmp->"+tmp);
+        // TODO bug 算法本身运行结果是对的 应该是中间过程有变量的错误
+        String api_sign = sha1(salt + tmp);
+        System.out.println("[*] api_sign->"+api_sign);
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url("https://mapi.appvipshop.com/vips-mobile/rest/device/generate_token")
-                .post(RequestBody.create(MediaType.parse("application/json"), data))
-                .header("Authorization", "OAuth api_sign=" + sha1(salt + sha1(salt + body)))
+                .post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded"), body_string))
+                .header("Authorization", "OAuth api_sign=" + api_sign)
                 .build();
-        
+
         new Thread(()->{
             try {
                 Response response = client.newCall(request).execute();
                 JSONObject jsonObject = new JSONObject(Objects.requireNonNull(response.body()).string());
+                System.out.println("[*] response ->"+jsonObject);
                 String did = jsonObject.getJSONObject("data").getJSONObject("token").getString("did");
                 System.out.println("[*] did-> "+did);
-//                return did;
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
-            
+
         }).start();
-//        return did;
     }
 
 //    private Object encrypt(String salt, String sha1Body2, String iv, String body) {
