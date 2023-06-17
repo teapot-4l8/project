@@ -1,4 +1,4 @@
-package Util;
+package MyUtil;
 
 import android.content.Context;
 import android.net.Proxy;

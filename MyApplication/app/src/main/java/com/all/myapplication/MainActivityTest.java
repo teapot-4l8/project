@@ -23,7 +23,7 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
 import java.util.*;
-import Util.AesEncryptUtil;
+import MyUtil.AesEncryptUtil;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -32,57 +32,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-/*
-Sure! Another way to achieve this is to use a `Handler` and `Runnable`.
-You can create a `Handler` in the `MainActivity` and pass it to the first thread.
-In the first thread, after receiving the response from the first request,
-you can create a `Runnable` that sends the second request and
-pass the response from the first request to it.
-Then you can use the `Handler` to post this `Runnable` to the main thread.
-This way, the second request will be sent after the first request has finished.
-
-Here's an example of how you could implement this:
-
-```java
-class MainActivity extends AppCompatActivity {
-    private Handler handler = new Handler(Looper.getMainLooper());
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        // Start first thread and pass handler
-        new FirstThread(handler).start();
-    }
-}
-
-class FirstThread extends Thread {
-    private Handler handler;
-
-    public FirstThread(Handler handler) {
-        this.handler = handler;
-    }
-
-    @Override
-    public void run() {
-        // Send first request and get response
-        final String response = "response from first request";
-        // Create Runnable that sends second request
-        Runnable secondRequestRunnable = new Runnable() {
-            @Override
-            public void run() {
-                // Use response to send second request
-            }
-        };
-        // Post Runnable to main thread using handler
-        handler.post(secondRequestRunnable);
-    }
-}
-```
-*/
-
-import Util.ApiConfig;
+import MyUtil.ApiConfig;
 
 public class MainActivityTest extends AppCompatActivity {
     String api_key = ApiConfig.API_KEY;
@@ -90,7 +40,7 @@ public class MainActivityTest extends AppCompatActivity {
     String mars_cid = UUID.randomUUID().toString();
     String ctime = String.valueOf(System.currentTimeMillis() / 1000);
     String session_id = mars_cid + "_shop_android_" + ctime;
-    String skey = ApiConfig.SKEY;
+    String skey = "6692c461c3810ab150c9a980d0c275ec";
     String device_token = mars_cid;
 //    String did = "123456";
     String android_id = generate_android_id();
@@ -149,7 +99,7 @@ public class MainActivityTest extends AppCompatActivity {
     }
 
     private void sendReq (String did) {
-        String key_word = "大飞机";
+        String key_word = "鞋子";
 
         String search_string = "api_key=" + api_key
                 + "&app_name=shop_android"
@@ -313,6 +263,7 @@ public class MainActivityTest extends AppCompatActivity {
         body_dict.put("did", "");
         body_dict.put("edata", encryptedData);
         body_dict.put("eversion", "0");
+        // TODO: skey
         body_dict.put("skey", "6692c461c3810ab150c9a980d0c275ec");
         body_dict.put("timestamp", String.valueOf(Instant.now().getEpochSecond()));
 

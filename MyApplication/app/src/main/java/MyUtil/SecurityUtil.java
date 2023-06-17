@@ -1,14 +1,12 @@
-package Util;
+package MyUtil;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 
-import Util.jni.AHAPIHelper;
+import MyUtil.jni.AHAPIHelper;
 
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -17,7 +15,6 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESedeKeySpec;
 import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 
 public class SecurityUtil {
 

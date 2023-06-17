@@ -1,18 +1,16 @@
 package com.all.myapplication;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import Util.AppUtils;
-import Util.Domain;
+import MyUtil.AppUtils;
+import MyUtil.Domain;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.Proxy;
 import java.nio.charset.StandardCharsets;
@@ -25,8 +23,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import Util.SecurityUtil;
-import Util.jni.AHAPIHelper;
+import MyUtil.SecurityUtil;
+import MyUtil.jni.AHAPIHelper;
 import okhttp3.Call;
 import okhttp3.HttpUrl;
 import okhttp3.MediaType;
@@ -35,7 +33,6 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-import okhttp3.internal.Util;
 
 public class MainactivityDW extends AppCompatActivity {
     private static final String REPLY_LIST = "/sns-itr/v1/reply/content-reply-list";

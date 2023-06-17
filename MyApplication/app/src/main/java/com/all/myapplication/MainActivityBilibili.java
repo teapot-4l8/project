@@ -1,6 +1,5 @@
 package com.all.myapplication;
 
-import android.media.audiofx.LoudnessEnhancer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,8 +13,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 
-import Util.AppUtils;
-import Util.BiliAPI;
+import MyUtil.BiliAPI;
 
 public class MainActivityBilibili extends AppCompatActivity {
     private Button btnBvid;

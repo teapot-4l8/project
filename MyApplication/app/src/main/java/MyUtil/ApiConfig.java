@@ -1,6 +1,7 @@
-package Util;
+package MyUtil;
 
 public class ApiConfig {
+    // TODO: skey in so n use invoke to trigger skey
     public static final String SKEY = "skey";
     public static final String TIMESTAMP = "timestamp";
     public static final String API_SIGN = "123456";

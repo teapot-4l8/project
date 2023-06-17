@@ -1,17 +1,13 @@
-package Util;
+package MyUtil;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
 import okhttp3.Call;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

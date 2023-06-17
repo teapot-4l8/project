@@ -1,4 +1,4 @@
-package Util;
+package MyUtil;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -6,9 +6,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.Looper;
-import android.util.Log;
-import android.widget.Toast;
 
 import java.util.Random;
 import java.util.UUID;

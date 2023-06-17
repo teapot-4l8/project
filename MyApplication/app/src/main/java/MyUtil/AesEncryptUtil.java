@@ -1,11 +1,4 @@
-package Util;
-
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.util.Base64;
+package MyUtil;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;

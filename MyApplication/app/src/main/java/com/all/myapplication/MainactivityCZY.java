@@ -1,9 +1,8 @@
 package com.all.myapplication;
 
-import Util.RequestUtil;
-import Util.SecurityUtil;
-import Util.Domain;
-import Util.AppUtils;
+import MyUtil.SecurityUtil;
+import MyUtil.Domain;
+import MyUtil.AppUtils;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -19,8 +18,8 @@ import org.json.JSONObject;
 import java.util.Map;
 import java.util.TreeMap;
 
-import Util.SignManager;
-import Util.ToastUtils;
+import MyUtil.SignManager;
+import MyUtil.ToastUtils;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

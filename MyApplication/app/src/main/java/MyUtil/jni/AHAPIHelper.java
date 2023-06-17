@@ -1,4 +1,4 @@
-package Util.jni;
+package MyUtil.jni;
 
 import android.content.Context;
 
