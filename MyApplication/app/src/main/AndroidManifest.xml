@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.all.myapplication">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.LOCAL_MAC_ADDRESS" />
+<!--    <uses-permission android:name="android.permission.LOCAL_MAC_ADDRESS" />-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
@@ -50,6 +50,11 @@
 
         <activity
             android:name=".MainActivityWPH"
+            android:exported="true" >
+        </activity>
+
+        <activity
+            android:name=".EnvironmentDetectActiviy"
             android:exported="true" >
         </activity>
 

@@ -169,3 +169,31 @@ public class RootChecker {
 ```
 
 需要注意的是，由于root检测可能会受到各种限制和变化，因此该方法并不能百分之百地检测出所有已经root的设备。建议综合考虑多种因素，包括但不限于检测su二进制文件、读取/system等关键目录的权限等，来提高检测的准确性。
+
+## dym app method
+
+```java
+    public static boolean isRooted() {
+        String[] strArr = {"/system/xbin/", "/system/bin/", "/system/sbin/", "/sbin/", "/vendor/bin/", "/su/bin/"};
+        for (int i2 = 0; i2 < 6; i2++) {
+            try {
+                String str = strArr[i2] + bh.y;
+                if (new File(str).exists()) {
+                    String exec = exec(new String[]{"ls", "-l", str});
+                    String str2 = "isRooted=" + exec;
+                    if (!TextUtils.isEmpty(exec)) {
+                        if (exec.indexOf("root") != exec.lastIndexOf("root")) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+```
+

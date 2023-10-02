@@ -20,7 +20,7 @@ import MyUtil.wphAPI;
 
 public class MainActivityWPH extends AppCompatActivity {
     static {
-        System.loadLibrary("wphCUtils");
+        System.loadLibrary("SoUtils");
     }
     public static native String getSKEY();
 

@@ -13,12 +13,12 @@ import com.all.myapplication.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     // Used to load the 'myapplication' library on application startup.
-    static {
-        System.loadLibrary("myapplication");
-    }
+//    static {
+//        System.loadLibrary("myapplication");
+//    }
 
     private ActivityMainBinding binding;
-    private Button btnCZY, btnDW, btnBplay, btnTEST, btnVipShop;
+    private Button btnCZY, btnDW, btnBplay, btnTEST, btnVipShop, btnEnv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         btnBplay = findViewById(R.id.Bplay);
         btnTEST = findViewById(R.id.test);
         btnVipShop = findViewById(R.id.vipshop);
+        btnEnv = findViewById(R.id.envDec);
     }
 
     private void initListener() {
@@ -80,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainActivityWPH.class);
+                startActivity(intent);
+            }
+        });
+
+        btnEnv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, EnvironmentDetectActiviy.class);
                 startActivity(intent);
             }
         });
