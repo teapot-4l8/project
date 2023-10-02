@@ -317,7 +317,8 @@ bool checkSystem() {
         char pathbuf[0x100] = {0};
         char readbuf[100] = {0};  // where the read data will be stored
         sprintf(pathbuf, "/proc/%d/status", getpid());
-        int fd = openat(NULL, pathbuf, O_RDONLY);
+//        int fd = openat(NULL, pathbuf, O_RDONLY);
+        int fd = openat(AT_FDCWD, pathbuf, O_RDONLY);
         if (fd == -1) {
             LOGE(TAG, "openat failed.\n");
         }
