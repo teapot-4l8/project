@@ -22,7 +22,7 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        wphCUtils.c EnvUtils.c)
+        wphCUtils.c EnvUtils.c AddEnvUtils.cpp)
 
 
 # Searches for a specified prebuilt library and stores the path as a

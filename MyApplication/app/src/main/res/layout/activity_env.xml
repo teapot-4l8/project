@@ -21,6 +21,73 @@
             android:layout_height="wrap_content"
             android:text="调试器进程名检测" />
 
+        <TextView
+            android:id="@+id/CheckParents_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="父进程名检测" />
+
+        <TextView
+            android:id="@+id/CheckTaskCount_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="apk线程检测" />
+
+        <TextView
+            android:id="@+id/NativeIsDBGConnected_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="安卓系统自带调试检测函数" />
+
+        <TextView
+            android:id="@+id/ptraceCheck_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ptrace检测" />
+
+        <TextView
+            android:id="@+id/checkbkpt_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="断点指令检测" />
+
+        <TextView
+            android:id="@+id/checkSystem_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="系统源码修改检测" />
+
+        <TextView
+            android:id="@+id/anti4_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="单步调试陷阱" />
+
+        <TextView
+            android:id="@+id/InterceptedSignalCheck_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="利用IDA先截获信号特性的检测" />
+
+
+        <TextView
+            android:id="@+id/IDACracked_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="利用IDA解析缺陷反调试" />
+
+        <TextView
+            android:id="@+id/CodeExecutionTimeCheck_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="五种代码执行时间检测" />
+
+        <TextView
+            android:id="@+id/thread_watchDumpPagemap_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Inotify事件监控dump" />
+
     </LinearLayout>
 
 </ScrollView>

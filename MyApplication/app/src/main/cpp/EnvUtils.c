@@ -8,6 +8,15 @@
 #include <dlfcn.h>
 #include <sys/ptrace.h>
 #include <stdbool.h>
+#include <sys/wait.h>
+#include <sys/cachectl.h>
+#include <sys/mman.h>
+#include <sys/inotify.h>
+#include <stdio.h>
+#include <signal.h>
+#include <unistd.h>
+#include <pthread.h>
+
 
 //导入头文件
 #include "logging.h"
@@ -272,8 +281,8 @@ void checkbkpt(u8* addr,u32 size)
                 break;
             }
             start = start + 4;
-        }//while
-    }//else
+        }
+    }
     return;
 }
 
@@ -289,6 +298,7 @@ jstring CBP (JNIEnv *env, jobject obj) {
 
 bool checkSystem() {
     // build a pipe
+    // The pipe is used for inter-process communication between the parent and child processes.
     int pipefd[2];
     if (pipe(pipefd) == -1) {
         LOGE(TAG, "pipe() error.\n");
@@ -298,27 +308,30 @@ bool checkSystem() {
     pid_t pid = fork();
     LOGE(TAG, "father pid is: %d\n", getpid());
     LOGE(TAG, "child pid is: %d\n", pid);
-    // for los
+    // fork failed
     if (pid < 0) {
         LOGE(TAG, "fork() error.\n");
         return false;
     }
     // child process
-    int childTracePid=0;
+    int childTracePid = 0;
     if (pid == 0) {
         // If the ptrace call is successful, it will return 0
         int iRet = ptrace(PTRACE_TRACEME, 0, 0, 0);
         if (iRet == -1) {
+            // If the ptrace call fails (returns -1), it means that the child process is already being traced, 
+            // indicating that it is being debugged.
             LOGE(TAG, "child ptrace failed.\n");
             exit(0);
         }
-        LOGE(TAG, "%s ptrace succeed.\n");
+        LOGE(TAG, "%d ptrace succeed.\n", iRet);
         // get tracepid
         char pathbuf[0x100] = {0};
         char readbuf[100] = {0};  // where the read data will be stored
         sprintf(pathbuf, "/proc/%d/status", getpid());
 //        int fd = openat(NULL, pathbuf, O_RDONLY);
         int fd = openat(AT_FDCWD, pathbuf, O_RDONLY);
+        LOGE("debugging...", "fd=%d", fd);
         if (fd == -1) {
             LOGE(TAG, "openat failed.\n");
         }
@@ -326,14 +339,48 @@ bool checkSystem() {
         read(fd, readbuf, 100);
         close(fd);
         uint8_t *start = (uint8_t *) readbuf;
+        // This sequence of bytes represents the ASCII characters for the string "TracerPid:\t"
         uint8_t des[100] = {0x54, 0x72, 0x61, 0x63, 0x65, 0x72, 0x50, 0x69, 0x64, 0x3A,0x09};
         int i = 100;
         bool flag= false;
         while (--i) {
+            LOGE(TAG, "i=%d", i);
             if(memcmp(start,des,10) == 0) {
-                
+                start += 11;
+                childTracePid = atoi((char*)start);
+                flag= true;
+                break;
+            } else {
+                start += 1;
+                flag = false;
             }
         }
+        if (flag == false) {
+            LOGE(TAG, "get tracepid failed.\n" );
+            return false;
+        }
+        // write data in pipe
+        close(pipefd[0]); // close read pipe
+        write(pipefd[1], (void*) & childTracePid, 4); // write data in the write pipe
+        close(pipefd[1]); // finish writing close write pipe
+        LOGE(TAG, "child succeed, Finish.\n");
+        exit(0);
+    } else {
+        // father process
+        LOGE(TAG, "开始等待子进程.\n");
+//        exit(0);
+//        waitpid(pid, NULL, NULL); // wait till child process over
+        int buf2 = 0;
+        read(pipefd[0], (void*)&buf2, 4); // read data from read pipe to buf
+        close(pipefd[0]); // close read pipe
+        LOGE(TAG, "子进程传递的内容为:%d\n", buf2);
+        // 判断子进程ptarce后的tracepid
+        if (buf2 == 0) {
+            LOGE(TAG, "源码被修改了.\n");
+        } else {
+            LOGE(TAG, "源码没有被修改.\n");
+        }
+        return true;
     }
 }
 
@@ -346,8 +393,259 @@ jstring CS_ (JNIEnv *env, jobject obj) {
      *  此时正常情况下，子进程的tracepid应该不为0。此时我们检测子进程的tracepid是否为0，
      *  如果为0说明源码被修改了。
      * */
+     bool bRet = checkSystem();
+     if (bRet == true) {
+         LOGE(TAG, "check succeed.\n");
+     } else {
+         LOGE(TAG, "check failed.\n");
+     }
+     LOGE(TAG, "main Finish pid:%d\n",getpid());
+     return (*env)->NewStringUTF(env, "CheckSystem");
 }
 
+
+
+
+
+
+////#!cpp
+//char dynamic_ccode[] = {0x1f,0xb4, //push {r0-r4}
+//                        0x01,0xde, //breakpoint
+//                        0x1f,0xbc, //pop {r0-r4}
+//                        0xf7,0x46};//mov pc,lr
+//char *g_addr;
+//void my_sigtrap(int sig){
+//    char change_bkp[] = {0x00,0x46}; //mov r0,r0
+//    memcpy(g_addr+2,change_bkp,2);
+//    __clear_cache((void*)g_addr,(void*)(g_addr+8)); // need to clear cache
+//    LOGI(TAG, "chang bpk to nop\n");
+//}
+//void anti4(){//SIGTRAP
+//    int ret,size;
+//    char *addr,*tmpaddr;
+//    signal(SIGTRAP,my_sigtrap);
+//    addr = (char*)malloc(PAGESIZE*2);
+//    memset(addr,0,PAGESIZE*2);
+//    g_addr = (char *)(((int) addr + PAGESIZE-1) & ~(PAGESIZE-1));
+//    LOGI("addr: %p ,g_addr : %p\n",addr,g_addr);
+//    ret = mprotect(g_addr,PAGESIZE,PROT_READ|PROT_WRITE|PROT_EXEC);
+//    if(ret!=0)
+//    {
+//        LOGE(TAG, "mprotect error\n");
+//        return ;
+//    }
+//    size = 8;
+//    memcpy(g_addr,dynamic_ccode,size);
+//    __clear_cache((void*)g_addr,(void*)(g_addr+size)); // need to clear cache
+//    __asm__("push {r0-r4,lr}\n\t"
+//            "mov r0,pc\n\t" //此时pc指向后两条指令
+//            "add r0,r0,#4\n\t"//+4 是的lr 地址为 pop{r0-r5}
+//            "mov lr,r0\n\t"
+//            "mov pc,%0\n\t"
+//            "pop {r0-r5}\n\t"
+//            "mov lr,r5\n\t" //恢复lr
+//    :
+//    :"r"(g_addr)
+//    :);
+//    LOGE(TAG, "hi, i'm here\n");
+//    free(addr);
+//}
+
+
+jstring ST (JNIEnv *env, jobject obj) {
+    return (*env)->NewStringUTF(env, "SigTrap");
+}
+
+void myhandler(int sig) {
+    //signal(5, myhandler);
+    LOGE(TAG, "myhandler.\n");
+    return;
+}
+int g_ret = 0;
+jstring ISC (JNIEnv *env, jobject obj) {
+    /**
+     * IDA会首先截获信号，导致进程无法接收到信号，导致不会执行信号处理函数。
+     * 将关键流程放在信号处理函数中，如果没有执行，就是被调试状态。
+     * */
+
+    // 设置SIGTRAP信号的处理函数为myhandler()
+    g_ret = (int)signal(SIGTRAP, myhandler);
+    if ( (int)SIG_ERR == g_ret )
+        LOGE(TAG, "signal ret value is SIG_ERR.\n");
+    // 打印signal的返回值(原处理函数地址)
+    LOGE(TAG, "signal ret value is %x\n",(unsigned char*)g_ret);
+    // 主动给自己进程发送SIGTRAP信号
+    raise(SIGTRAP);
+    raise(SIGTRAP);
+    raise(SIGTRAP);
+    kill(getpid(), SIGTRAP);
+    LOGE(TAG, "main.\n");
+    return (*env)->NewStringUTF(env, "SigTrap");
+}
+
+
+jstring IDAC (JNIEnv *env, jobject obj) {
+    /**
+     * IDA采用递归下降算法来反汇编指令，而该算法最大的缺点在于它无法处理间接代码路径，无法识别动态算出来的跳转
+     * 而arm架构下由于存在arm和thumb指令集，就涉及到指令集切换，IDA在某些情况下无法智能识别arm和thumb指令，
+     * 进一步导致无法进行伪代码还原。
+     * 在IDA动态调试时，仍然存在该问题，若在指令识别错误的地点写入断点，
+     * 有可能使得调试器崩溃。（ 可能写断点 ,不知道写ARM还是THUMB ,造成的崩溃）
+     * */
+
+    #if(JUDGE_THUMB)
+    #define GETPC_KILL_IDAF5_SKATEBOARD \
+    __asm __volatile( \
+    "mov r0,pc \n\t" \
+    "adds r0,0x9 \n\t" \
+    "push {r0} \n\t" \
+    "pop {r0} \n\t" \
+    "bx r0 \n\t" \
+    \
+    ".byte 0x00 \n\t" \
+    ".byte 0xBF \n\t" \
+    \
+    ".byte 0x00 \n\t" \
+    ".byte 0xBF \n\t" \
+    \
+    ".byte 0x00 \n\t" \
+    ".byte 0xBF \n\t" \
+    :::"r0" \
+    );
+    #else
+    #define GETPC_KILL_IDAF5_SKATEBOARD \
+    __asm __volatile( \
+    "mov r0,pc \n\t" \
+    "add r0,0x10 \n\t" \
+    "push {r0} \n\t" \
+    "pop {r0} \n\t" \
+    "bx r0 \n\t" \
+    ".int 0xE1A00000 \n\t" \
+    ".int 0xE1A00000 \n\t" \
+    ".int 0xE1A00000 \n\t" \
+    ".int 0xE1A00000 \n\t" \
+    :::"r0" \
+    );
+    #endif
+
+    // 常量标签版本
+    #if(JUDGE_THUMB)
+    #define IDAF5_CONST_1_2 \
+    __asm __volatile( \
+    "b T1 \n\t" \
+    "T2: \n\t" \
+    "adds r0,1 \n\t" \
+    "bx r0 \n\t" \
+    "T1: \n\t" \
+    "mov r0,pc \n\t" \
+    "b T2 \n\t" \
+    :::"r0"
+    );
+    #else
+    #define IDAF5_CONST_1_2 \
+    __asm __volatile( \
+    "b T1 \n\t" \
+    "T2: \n\t" \
+    "bx r0 \n\t" \
+    "T1: \n\t" \
+    "mov r0,pc \n\t" \
+    "b T2 \n\t" \
+    :::"r0" \
+    );
+    #endif
+    return (*env)->NewStringUTF(env, "IDACracked");
+}
+
+jstring CETC (JNIEnv *env, jobject obj) {
+    /** TODO
+     * 一段代码，在a处获取一下时间，运行一段后，再在b处获取下时间，
+     * 然后通过(b时间-a时间)求时间差,正常情况下这个时间差会非常小，
+     * 如果这个时间差比较大，说明正在被单步调试。
+     * */
+    return (*env)->NewStringUTF(env, "CodeExecutionTimeCheck");
+}
+
+void thread_watchDumpPagemap()
+{
+    LOGE(TAG, "-------------------watchDump:Pagemap-------------------\n");
+    char dirName[NAME_MAX]={0};
+    snprintf(dirName,NAME_MAX,"/proc/%d/pagemap",getpid());
+    int fd = inotify_init();
+    if (fd < 0)
+    {
+        LOGE(TAG, "inotify_init err.\n");
+        return;
+    }
+    int wd = inotify_add_watch(fd,dirName,IN_ALL_EVENTS);
+    if (wd < 0)
+    {
+        LOGE(TAG, "inotify_add_watch err.\n");
+        close(fd);
+        return;
+    }
+    const int buflen=sizeof(struct inotify_event) * 0x100;
+    char buf[buflen]={0};
+    fd_set readfds;
+    while(1)
+    {
+        FD_ZERO(&readfds);
+        FD_SET(fd, &readfds);
+        int iRet = select(fd+1,&readfds,0,0,0); // 此处阻塞
+        LOGE(TAG, "iRet的返回值:%d\n",iRet);
+        if(-1==iRet)
+            break;
+        if (iRet)
+        {
+            memset(buf,0,buflen);
+            int len = read(fd,buf,buflen);
+            int i=0;
+            while(i < len)
+            {
+                struct inotify_event *event = (struct inotify_event*)&buf[i];
+                LOGE(TAG, "1 event mask的数值为:%d\n",event->mask);
+                if( (event->mask==IN_OPEN) )
+                {
+                    // 此处判定为有true,执行崩溃.
+                    LOGE(TAG, "2 有人打开pagemap,第%d次.\n\n",i);
+                    //__asm __volatile(".int 0x8c89fa98");
+                }
+                i += sizeof (struct inotify_event) + event->len;
+            }
+            LOGE(TAG, "-----3 退出小循环-----\n");
+        }
+    }
+    inotify_rm_watch(fd,wd);
+    close(fd);
+    LOGE(TAG, "-----4 退出大循环,关闭监视-----\n");
+    return;
+}
+
+jstring TDP (JNIEnv *env, jobject obj) {
+    /**
+     * 通常壳会在程序运行前完成对text的解密，所以脱壳可以通过dd与gdb_gcore来dump
+     * /proc/pid/mem或/proc/pid/pagemap，获取到解密后的代码内容
+     * 可以通过Inotify系列api来监控mem或pagemap的打开或访问事件，
+     * 一旦发生时间就结束进程来阻止dump。
+     * */
+
+    // 监控/proc/pid/mem
+    pthread_t ptMem,t,ptPageMap;
+    int iRet=0;
+    // 监控/proc/pid/pagemap
+    iRet=pthread_create(&ptPageMap,NULL,(PPP)thread_watchDumpPagemap,NULL);
+    if (iRet != 0) {
+        LOGE(TAG, "Create,thread_watchDumpPagemap,error!\n");
+        return (*env)->NewStringUTF(env, "Create,thread_watchDumpPagemap,error!\n");
+    }
+    iRet=pthread_detach(ptPageMap);
+    if (iRet != 0) {
+        LOGE(TAG, "pthread_detach,thread_watchDumpPagemap,error!\n");
+        return (*env)->NewStringUTF(env, "pthread_detach,thread_watchDumpPagemap,error!\n");
+    }
+    LOGE(TAG, "-------------------smain-------------------\n");
+    LOGE(TAG, "pid:%d\n",getpid());
+    return (*env)->NewStringUTF(env, "CodeExecutionTimeCheck");
+}
 
 static JNINativeMethod gMethods[] = {
         {"SearchObjProcess", "()Ljava/lang/String;", (void *) SOP},
@@ -356,19 +654,24 @@ static JNINativeMethod gMethods[] = {
         {"NativeIsDBGConnected", "()Ljava/lang/String;", (void *) NIDBGC},
         {"ptraceCheck", "()Ljava/lang/String;", (void *) PC},
         {"CheckBreakPoint", "()Ljava/lang/String;", (void *) CBP},
-        {"CheckSystem", "()Ljava/lang/String;", (void *) CS_}
+        {"CheckSystem", "()Ljava/lang/String;", (void *) CS_},
+        {"SigTrap", "()Ljava/lang/String;", (void *) ST},
+        {"InterceptedSignalCheck", "()Ljava/lang/String;", (void *) ISC},
+        {"IDACracked", "()Ljava/lang/String;", (void *) IDAC},
+        {"CodeExecutionTimeCheck", "()Ljava/lang/String;", (void *) CETC},
+        {"Thread_watchDumpPagemap", "()Ljava/lang/String;", (void *) TDP}
 };
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
     JNIEnv *env = NULL;
-    // 在java虚拟机中获取env
+    // Get env in java virtual machine
     if ((*vm)->GetEnv(vm, (void **) &env, JNI_VERSION_1_6) != JNI_OK) {
         return JNI_ERR;
     }
-    // 找到Java中的类
+    // find class in java
     jclass clazz = (*env)->FindClass(env, "com/all/myapplication/EnvironmentDetectActiviy");
-    // 将类中的方法注册到JNI中 (RegisterNatives)
-    int res = (*env)->RegisterNatives(env, clazz, gMethods, 7);
+    // register class methods in jni  (RegisterNatives)
+    int res = (*env)->RegisterNatives(env, clazz, gMethods, 12);
     if (res < 0) {
         return JNI_ERR;
     }
