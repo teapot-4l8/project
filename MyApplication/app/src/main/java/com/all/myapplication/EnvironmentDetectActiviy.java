@@ -1,12 +1,10 @@
 package com.all.myapplication;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
+import MyUtil.EnvUtils.*;
 
-import com.all.myapplication.databinding.ActivityMainBinding;
 
 public class EnvironmentDetectActiviy extends AppCompatActivity {
 
@@ -21,40 +19,68 @@ public class EnvironmentDetectActiviy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_env);
 
+        // TextView checkPort23946ByTcpTV = findViewById(R.id.CheckPort23946ByTcp_text);
+        // String checkPort23946ByTcp = CheckPort23946ByTcp();
+        // checkPort23946ByTcpTV.setText(checkPort23946ByTcp);
+        setTextViewText(R.id.CheckPort23946ByTcp_text, CheckPort23946ByTcp());
 
-        String checkPort23946ByTcp = CheckPort23946ByTcp();
-//        Log.e(TAG, checkPort23946ByTcp);
         String searchObjProcess = SearchObjProcess();
-//        Log.e(TAG, searchObjProcess);
+        setTextViewText(R.id.SearchObjProcess_text, searchObjProcess);
+
         String checkParents =  CheckParents();
+        setTextViewText(R.id.CheckParents_text, checkParents);
 
         String checkTaskCount = CheckTaskCount();
+        setTextViewText(R.id.CheckTaskCount_text, checkTaskCount);
 
         String nativeIsDBGConnected = NativeIsDBGConnected();
+        setTextViewText(R.id.NativeIsDBGConnected_text, nativeIsDBGConnected);
 
         String ptraceCheck_ = ptraceCheck();
-//        Log.e(TAG, ptraceCheck_);
+        setTextViewText(R.id.ptraceCheck_text, ptraceCheck_);
+
+
         String checkBreakPoint = CheckBreakPoint();
+        setTextViewText(R.id.checkbkpt_text, checkBreakPoint);
 
 //        String checkSystem = CheckSystem(); // TODO: fix bug 11.
 //        Log.e(TAG, checkSystem);
 
-        String sigTrap = SigTrap();  // TODO: fix bug 12.
+//        String sigTrap = SigTrap();  // TODO: fix bug 12.
+//        setTextViewText(R.id., checkBreakPoint);
 
         String interceptedSignalCheck = InterceptedSignalCheck();
+        setTextViewText(R.id.InterceptedSignalCheck_text, interceptedSignalCheck);
 
         String idaCracked = IDACracked();
+        setTextViewText(R.id.IDACracked_text, idaCracked);
 
         String codeExecutionTimeCheck = CodeExecutionTimeCheck();
+        setTextViewText(R.id.CodeExecutionTimeCheck_text, codeExecutionTimeCheck);
 
         String thread_watchDumpPagemap = Thread_watchDumpPagemap();
+        setTextViewText(R.id.thread_watchDumpPagemap_text, thread_watchDumpPagemap);
+
+        setTextViewText(R.id.frida_text, String.valueOf(FridaDetect.isFridaServerRunning()));
+
+        setTextViewText(R.id.root_text_1, String.valueOf(DeviceUtils.isDeviceRooted1()));
+        setTextViewText(R.id.root_text_2, String.valueOf(DeviceUtils.isDeviceRooted2()));
+        setTextViewText(R.id.root_text_3, String.valueOf(DeviceUtils.isDeviceRooted3()));
+
+        setTextViewText(R.id.bl_text_1, String.valueOf(DeviceUtils.isBootloaderUnlocked1()));
+        setTextViewText(R.id.bl_text_2, String.valueOf(DeviceUtils.isBootloaderUnlocked2()));
+
+        setTextViewText(R.id.isEmulator_text, String.valueOf(DeviceUtils.isEmulator()));
+
+        setTextViewText(R.id.xposed_text, String.valueOf(DeviceUtils.isXposedInstalled()));
+
+        setTextViewText(R.id.proxy_text, String.valueOf(DeviceUtils.proxyDetector(EnvironmentDetectActiviy.this)));
     }
 
-// TODO: show these result
-//    private void showResult() {
-//        CheckPort23946ByTcpText = findViewById(R.id.CheckPort23946ByTcp_text);
-//        CheckPort23946ByTcpText.setText(CheckPort23946ByTcpText);
-//    }
+    private void setTextViewText(int textViewId, String text) {
+        TextView textView = findViewById(textViewId);
+        textView.setText(text);
+    }
 
     // IDA调试端口检测
     public static native String CheckPort23946ByTcp();

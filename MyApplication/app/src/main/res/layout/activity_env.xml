@@ -5,88 +5,439 @@
     android:fillViewport="true">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-        <TextView
-            android:id="@+id/CheckPort23946ByTcp_text"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="IDA调试端口检测" />
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="50dp">
 
-        <TextView
-            android:id="@+id/SearchObjProcess_text"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="--------反调试内容--------"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="调试器进程名检测" />
+            android:layout_height="20dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/CheckParents_text"
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:text="IDA调试端口检测:"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+
+            <TextView
+                android:id="@+id/CheckPort23946ByTcp_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="asjfdljflkasdffasajdf"
+                android:autoSizeTextType="uniform" 
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="父进程名检测" />
+            android:layout_height="20dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/CheckTaskCount_text"
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:text="调试器进程名检测:"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+
+            <TextView
+                android:id="@+id/SearchObjProcess_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="调试器进程名检测......"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="apk线程检测" />
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:text="父进程名检测:"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
 
-        <TextView
-            android:id="@+id/NativeIsDBGConnected_text"
+            <TextView
+                android:id="@+id/CheckParents_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="父进程名检测......"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="安卓系统自带调试检测函数" />
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:text="apk线程检测:"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
 
-        <TextView
-            android:id="@+id/ptraceCheck_text"
+            <TextView
+                android:id="@+id/CheckTaskCount_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="线程检测......"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ptrace检测" />
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:text="安卓系统自带调试检测函数:"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
 
-        <TextView
-            android:id="@+id/checkbkpt_text"
+            <TextView
+                android:id="@+id/NativeIsDBGConnected_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="默认Dalvik"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="断点指令检测" />
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:text="ptrace检测:"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
 
-        <TextView
-            android:id="@+id/checkSystem_text"
+            <TextView
+                android:id="@+id/ptraceCheck_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="ptrace......"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="系统源码修改检测" />
+            android:layout_height="20dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/anti4_text"
+            <TextView
+                android:layout_width="149dp"
+                android:layout_height="match_parent"
+                android:text="断点指令检测:" />
+
+            <TextView
+                android:id="@+id/checkbkpt_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="未被下断点"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="单步调试陷阱" />
+            android:layout_height="20dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/InterceptedSignalCheck_text"
+            <TextView
+                android:layout_width="186dp"
+                android:layout_height="match_parent"
+                android:text="系统源码修改检测:" />
+
+            <TextView
+                android:id="@+id/checkSystem_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="系统源码未被修改"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+        
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="利用IDA先截获信号特性的检测" />
+            android:layout_height="20dp"
+            android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="151dp"
+                android:layout_height="match_parent"
+                android:text="单步调试陷阱:" />
 
-        <TextView
-            android:id="@+id/IDACracked_text"
+            <TextView
+                android:id="@+id/anti4_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="请启用单步调试！"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="利用IDA解析缺陷反调试" />
+            android:layout_height="20dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/CodeExecutionTimeCheck_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="五种代码执行时间检测" />
+            <TextView
+                android:layout_width="155dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="uniform"
+                android:text="利用IDA先截获信号特性的检测:" />
 
-        <TextView
-            android:id="@+id/thread_watchDumpPagemap_text"
+            <TextView
+                android:id="@+id/InterceptedSignalCheck_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="wait for ida appearing..."
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Inotify事件监控dump" />
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="uniform"
+                android:text="利用IDA解析缺陷反调试:" />
+
+            <TextView
+                android:id="@+id/IDACracked_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="请用ida反编译so文件"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="161dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="none"
+                android:text="代码执行时间检测:" />
+
+            <TextView
+                android:id="@+id/CodeExecutionTimeCheck_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="请先配置函数"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:text="Inotify事件监控dump:"
+                android:autoSizeTextType="uniform"/>
+
+            <TextView
+                android:id="@+id/thread_watchDumpPagemap_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="null"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="--------环境检测--------"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/frida"
+                android:layout_width="109dp"
+                android:layout_height="match_parent"
+                android:text="@string/frida" />
+
+            <TextView
+                android:id="@+id/frida_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="97dp"
+                android:layout_height="match_parent"
+                android:text="@string/root" />
+
+            <TextView
+                android:id="@+id/root_text_1"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:text="root检测法1" />
+
+            <TextView
+                android:id="@+id/root_text_2"
+                android:layout_width="89dp"
+                android:layout_height="match_parent"
+                android:text="root检测法2" />
+
+            <TextView
+                android:id="@+id/root_text_3"
+                android:layout_width="97dp"
+                android:layout_height="match_parent"
+                android:text="root检测法3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="146dp"
+                android:layout_height="match_parent"
+                android:text="@string/bootLoader" />
+
+            <TextView
+                android:id="@+id/bl_text_1"
+                android:layout_width="117dp"
+                android:layout_height="match_parent"
+                android:text="bl 检测法1" />
+
+            <TextView
+                android:id="@+id/bl_text_2"
+                android:layout_width="89dp"
+                android:layout_height="match_parent"
+                android:text="bl 检测法2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="133dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="none"
+                android:text="是否是模拟器:" />
+
+            <TextView
+                android:id="@+id/isEmulator_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="133dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="none"
+                android:text="是否安装xposed:" />
+
+            <TextView
+                android:id="@+id/xposed_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="133dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="none"
+                android:text="是否在抓包" />
+
+            <TextView
+                android:id="@+id/proxy_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 

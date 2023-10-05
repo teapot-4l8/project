@@ -11,9 +11,8 @@ project
 │   └── app.py（废弃的文件）
 ├── demo0（包含两个登录页面 MainActivity用okhttp3传输, MainActivity2用的是retrofit.暂时没有bug
 原先是从空白文件建立的，不知道怎么配置c++环境。后期要重新建立一个c++项目再把主要代码迁移过去 PPT示例之一）
-├── My Application（成品雏形  PPT示例之一）
+├── My Application（成品r）
 ├── portecle-1.11（证书转化工具，用于p12 bks互转）
-├── cccrackjni（学习jni用的）
 ├── reverse（安全测试脚本）
 ├── s5DaBai // jni 没有bug，可以拿来参考。。。新加了环境检测 *[PPT示例之一]
 |
@@ -38,8 +37,6 @@ project
 |   |
 |   └── 服务端证书校验.md // 参考过程，在比较后面
 |
-├── xiaoyuanwang // 校园网一键登录，写着玩玩，用盗版chatGPT全程ctrl cv 无法运行。。。有时间研究一下后门 :)
-|
 ├── AndroidDevelop.md // demo0开发的参考过程 
 |
 ├── jniDev.md // s5DaBaik的开发流程
@@ -57,24 +54,24 @@ project
 
 1. 服务端证书校验
 2. 客户端证书校验
-3. java层和so层sign加密和原创参数加密流程
-4. java层实现root检测
-5. java层实现xposed检测
-6. java层实现bl锁检测(?)
-7. java层实现模拟器检测
-8. java层实现代理检测(refer to liebao)
+3. java层和so层sign加密和原创参数加密流程 -
+4. java层实现root检测 -
+5. java层实现xposed检测 -
+6. java层实现bl锁检测 -
+7. java层实现模拟器检测 -
+8. java层实现代理检测(refer to liebao) -
 9. so层实现root检测(null)
 10. so层实现frida检测(github)
 11. so层实现xposed检测(github)
-12. so层实现多开virtualApp检测(github)
+12. so层实现多开virtualApp检测(github)（意义不大 不做了）
 13. so层实现反内存dump(github)
 14. so层实现模拟器检测(refer to liebao) 原理是检测屏幕宽度而已，也有检测有没有手机厂商的 没有太大意义
-15. 签名校验  (半成品 签名值需要写在本地或服务器 本地的需要加密)
+15. 反调试的 13 种方法
 
 ### 待实现：
 
 1. 完善java层协议加密(使用逆向过的api接口，不搭后端。界面ui设计为纵向若干按钮，点击即可发送请求)
-2. 完善so层协议加密(12放一起)
+2. 完善so层数据加密(12放一起)
 3. so层实现bootloader锁检测
 4. sus app detect(magisk,kernelSU)
 5. 代码混淆技术的学习(可选)

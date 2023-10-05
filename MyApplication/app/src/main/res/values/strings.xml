@@ -11,4 +11,7 @@
     <string name="environment_detector">environment detector</string>
     <string name="execute">execute/refresh</string>
     <string name="vipshop">vipshop</string>
+    <string name="frida">frida是否在运行:</string>
+    <string name="root">手机是否root:</string>
+    <string name="bootLoader">bootLoader是否解锁:</string>
 </resources>
