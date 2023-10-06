@@ -71,36 +71,40 @@
                 android:layout_margin="16dp"/>
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/dif_md5"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="2"
-                android:text="Button 7"
-                android:layout_margin="16dp"/>
+                android:text="@string/difmd5"
+                android:layout_margin="16dp"
+                android:backgroundTint="#4CAF50"/>
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/enc_args"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="2"
-                android:text="Button 8"
-                android:layout_margin="16dp"/>
+                android:text="@string/encData"
+                android:layout_margin="16dp"
+                android:backgroundTint="#FF9800"/>
 
             <Button
-                android:id="@+id/button9"
+                android:id="@+id/certificateVerfy"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="2"
-                android:text="Button 9"
-                android:layout_margin="16dp"/>
+                android:text="@string/certifCheck"
+                android:layout_margin="16dp"
+                android:backgroundTint="#83C5BB"/>
 
             <Button
-                android:id="@+id/button10"
+                android:id="@+id/github_jni"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_weight="2"
-                android:text="Button 10"
-                android:layout_margin="16dp"/>
+                android:text="@string/github_jni"
+                android:layout_margin="16dp"
+                android:backgroundTint="#FFEB3B"/>
 
         </LinearLayout>
 

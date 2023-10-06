@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     private ActivityMainBinding binding;
-    private Button btnCZY, btnDW, btnBplay, btnTEST, btnVipShop, btnEnv;
+    private Button btnCZY, btnDW, btnBplay, btnTEST, btnVipShop, btnEnv, btnCert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         btnTEST = findViewById(R.id.test);
         btnVipShop = findViewById(R.id.vipshop);
         btnEnv = findViewById(R.id.envDec);
+        btnCert = findViewById(R.id.certificateVerfy);
     }
 
     private void initListener() {
@@ -89,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, EnvironmentDetectActiviy.class);
+                startActivity(intent);
+            }
+        });
+
+        btnCert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CertifVerfyActivity.class);
                 startActivity(intent);
             }
         });

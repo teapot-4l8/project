@@ -410,7 +410,35 @@
                 android:text="是否安装xposed:" />
 
             <TextView
-                android:id="@+id/xposed_text"
+                android:id="@+id/xposed_text0"
+                android:layout_width="54dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/xposed_text1"
+                android:layout_width="54dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="133dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="none"
+                android:text="是否安装lsposed:" />
+
+            <TextView
+                android:id="@+id/lsposed_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text=""
@@ -427,10 +455,50 @@
                 android:layout_width="133dp"
                 android:layout_height="match_parent"
                 android:autoSizeTextType="none"
-                android:text="是否在抓包" />
+                android:text="@string/isProxy" />
 
             <TextView
                 android:id="@+id/proxy_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="133dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="none"
+                android:text="@string/magiskInstalled" />
+
+            <TextView
+                android:id="@+id/magisk_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="133dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="none"
+                android:text="@string/kernelsuInstalled" />
+
+            <TextView
+                android:id="@+id/kernelSU_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text=""

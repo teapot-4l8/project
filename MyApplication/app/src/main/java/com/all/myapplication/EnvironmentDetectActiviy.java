@@ -3,7 +3,9 @@ package com.all.myapplication;
 import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
 import MyUtil.EnvUtils.*;
+
 
 
 public class EnvironmentDetectActiviy extends AppCompatActivity {
@@ -72,9 +74,16 @@ public class EnvironmentDetectActiviy extends AppCompatActivity {
 
         setTextViewText(R.id.isEmulator_text, String.valueOf(DeviceUtils.isEmulator()));
 
-        setTextViewText(R.id.xposed_text, String.valueOf(DeviceUtils.isXposedInstalled()));
+        XposedDetect xposedDetect = XposedDetect.a(getPackageManager());
+        setTextViewText(R.id.xposed_text0, String.valueOf(DeviceUtils.isXposedInstalled()));
+        setTextViewText(R.id.xposed_text1, String.valueOf(xposedDetect.a()));
+        setTextViewText(R.id.lsposed_text, String.valueOf(DeviceUtils.isLSposedInstalled()));
 
         setTextViewText(R.id.proxy_text, String.valueOf(DeviceUtils.proxyDetector(EnvironmentDetectActiviy.this)));
+
+        setTextViewText(R.id.magisk_text, String.valueOf(DeviceUtils.MagiskExisted()));
+        setTextViewText(R.id.kernelSU_text, String.valueOf(DeviceUtils.KernelSU()));
+
     }
 
     private void setTextViewText(int textViewId, String text) {

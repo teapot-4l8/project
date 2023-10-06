@@ -79,6 +79,11 @@ public class DeviceUtils {
         return new File(xposedBridgePath).exists();
     }
 
+    public static boolean isLSposedInstalled() {
+        String lsposedBridgePath = "/data/adb/lspd";
+        return new File(lsposedBridgePath).exists();
+    }
+
     public static boolean proxyDetector(Context context) {
         int port;
         String str;
@@ -101,4 +106,13 @@ public class DeviceUtils {
         return (TextUtils.isEmpty(str) || port == -1) ? false : true;
     }
 
+    public static boolean MagiskExisted() {
+        String magiskAppPath = "/sbin/magisk";
+        return new File(magiskAppPath).exists();
+    }
+
+    public static boolean KernelSU() {
+        String kernelSUAppPath = "/sbin/kernelsu";
+        return new File(kernelSUAppPath).exists();
+    }
 }

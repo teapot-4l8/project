@@ -58,6 +58,11 @@
             android:exported="true" >
         </activity>
 
+        <activity
+            android:name=".CertifVerfyActivity"
+            android:exported="true" >
+        </activity>
+
 
     </application>
 

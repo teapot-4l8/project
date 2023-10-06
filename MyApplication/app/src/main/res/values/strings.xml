@@ -14,4 +14,11 @@
     <string name="frida">frida是否在运行:</string>
     <string name="root">手机是否root:</string>
     <string name="bootLoader">bootLoader是否解锁:</string>
+    <string name="difmd5">改良md5</string>
+    <string name="encData">数据加密案例</string>
+    <string name="github_jni">github jni</string>
+    <string name="certifCheck">双向证书校验</string>
+    <string name="isProxy">是否在抓包:</string>
+    <string name="magiskInstalled">是否安装Magisk:</string>
+    <string name="kernelsuInstalled">是否安装KernelSU:</string>
 </resources>
