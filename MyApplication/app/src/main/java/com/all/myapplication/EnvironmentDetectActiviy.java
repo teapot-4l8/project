@@ -21,9 +21,6 @@ public class EnvironmentDetectActiviy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_env);
 
-        // TextView checkPort23946ByTcpTV = findViewById(R.id.CheckPort23946ByTcp_text);
-        // String checkPort23946ByTcp = CheckPort23946ByTcp();
-        // checkPort23946ByTcpTV.setText(checkPort23946ByTcp);
         setTextViewText(R.id.CheckPort23946ByTcp_text, CheckPort23946ByTcp());
 
         String searchObjProcess = SearchObjProcess();

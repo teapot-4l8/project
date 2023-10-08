@@ -10,11 +10,10 @@ cmake_minimum_required(VERSION 3.18.1)
 project("myapplication")
 
 #add_subdirectory(mini_io)
-#
-#include_directories(mini_io
-#        JNIHelper
-#        check
-#        utils)
+
+include_directories(
+        AdvancedMd5
+)
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -30,6 +29,15 @@ add_library( # Sets the name of the library.
 
         # Provides a relative path to your source file(s).
         wphCUtils.c EnvUtils.c)
+
+add_library(
+        algorithm
+
+        SHARED
+
+        AdvancedMd5/algorithm.c
+        AdvancedMd5/newmd5.c
+)
 
 #add_library( # Sets the name of the library.
 #        anti

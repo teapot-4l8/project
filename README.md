@@ -4,17 +4,16 @@
 project
 │
 ├── assets（存放md文件的图片）
-├── algorithm（改良算法）
+├── algorithm（改良算法源码）
 ├── back（后端-该目录包含后端代码）
 │   ├── cert（服务端和客户端证书的备份）
 │   ├── test.py（测试用 有两个接口 分别对应Mainactivity1/2用的api）
 │   └── app.py（废弃的文件）
 ├── demo0（包含两个登录页面 MainActivity用okhttp3传输, MainActivity2用的是retrofit.暂时没有bug
-原先是从空白文件建立的，不知道怎么配置c++环境。后期要重新建立一个c++项目再把主要代码迁移过去 PPT示例之一）
-├── My Application（成品r）
+原先是从空白文件建立的 PPT示例之一）
+├── My Application（成品）
 ├── portecle-1.11（证书转化工具，用于p12 bks互转）
 ├── reverse（安全测试脚本）
-├── s5DaBai // jni 没有bug，可以拿来参考。。。新加了环境检测 *[PPT示例之一]
 |
 ├── server_cert // 服务端证书校验资料
 |   |

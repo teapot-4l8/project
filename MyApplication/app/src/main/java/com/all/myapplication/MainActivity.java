@@ -6,9 +6,6 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-
-import MyUtil.RequestUtil;
 
 import com.all.myapplication.databinding.ActivityMainBinding;
 
@@ -35,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         cardEnv = findViewById(R.id.environment);
         cardCert = findViewById(R.id.certificate);
         cardTest = findViewById(R.id.test);
+        cardMd5 = findViewById(R.id.md);
+        cardFingerPrint = findViewById(R.id.signature);
     }
 
     private void initListener() {
@@ -87,6 +86,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CertifVerfyActivity.class);
+                startActivity(intent);
+            }
+        });
+        cardMd5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ActivityMd.class);
+                startActivity(intent);
+            }
+        });
+        cardFingerPrint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ActivitySign.class);
                 startActivity(intent);
             }
         });
