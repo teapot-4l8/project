@@ -1,16 +1,16 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="che168">che168</string>
-    <string name="dewu">dewu</string>
+    <string name="che168">登录</string>
+    <string name="dewu">评论信息</string>
     <string name="reset">reset</string>
     <string name="login">execute</string>
     <string name="username">username:</string>
     <string name="login_che">Login che</string>
-    <string name="b_play">B_play</string>
+    <string name="b_play">播放数据</string>
     <string name="test">test</string>
-    <string name="environment_detector">environment detector</string>
+    <string name="environment_detector">环境检测与反调试</string>
     <string name="execute">execute/refresh</string>
-    <string name="vipshop">vipshop</string>
+    <string name="vipshop">商品信息</string>
     <string name="frida">frida是否在运行:</string>
     <string name="root">手机是否root:</string>
     <string name="bootLoader">bootLoader是否解锁:</string>

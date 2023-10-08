@@ -1,6 +1,7 @@
 package com.all.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,65 +13,53 @@ import MyUtil.RequestUtil;
 import com.all.myapplication.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    // Used to load the 'myapplication' library on application startup.
-//    static {
-//        System.loadLibrary("myapplication");
-//    }
-
     private ActivityMainBinding binding;
-    private Button btnCZY, btnDW, btnBplay, btnTEST, btnVipShop, btnEnv, btnCert;
+    private CardView cardLogin, cardChat, cardVideo, cardShop, cardEnv, cardCert, cardFingerPrint, cardMd5, cardGighub, cardTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Example of a call to a native method
-//        TextView tv = binding.sampleText;
-//        tv.setText(stringFromJNI());
 
         initView();
         initListener();
-
-        boolean hasproxy = RequestUtil.hasproxy(MainActivity.this);
-        System.out.println("[*] if use proxy ->" + hasproxy);
     }
 
     private void initView() {
-        btnCZY = findViewById(R.id.chezhiying);
-        btnDW = findViewById(R.id.dw);
-        btnBplay = findViewById(R.id.Bplay);
-        btnTEST = findViewById(R.id.test);
-        btnVipShop = findViewById(R.id.vipshop);
-        btnEnv = findViewById(R.id.envDec);
-        btnCert = findViewById(R.id.certificateVerfy);
+        cardLogin = findViewById(R.id.login);
+        cardChat = findViewById(R.id.chat);
+        cardVideo = findViewById(R.id.play);
+        cardShop = findViewById(R.id.shop);
+        cardEnv = findViewById(R.id.environment);
+        cardCert = findViewById(R.id.certificate);
+        cardTest = findViewById(R.id.test);
     }
 
     private void initListener() {
-        btnCZY.setOnClickListener(new View.OnClickListener() {
+        cardLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainactivityCZY.class);
                 startActivity(intent);
             }
         });
-        btnDW.setOnClickListener(new View.OnClickListener() {
+        cardChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainactivityDW.class);
                 startActivity(intent);
             }
         });
-        btnBplay.setOnClickListener(new View.OnClickListener() {
+        cardVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainActivityBilibili.class);
                 startActivity(intent);
             }
         });
-        btnTEST.setOnClickListener(new View.OnClickListener() {
+        cardTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainActivityTest.class);
@@ -78,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnVipShop.setOnClickListener(new View.OnClickListener() {
+        cardShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainActivityWPH.class);
@@ -86,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnEnv.setOnClickListener(new View.OnClickListener() {
+        cardEnv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, EnvironmentDetectActiviy.class);
@@ -94,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnCert.setOnClickListener(new View.OnClickListener() {
+        cardCert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CertifVerfyActivity.class);

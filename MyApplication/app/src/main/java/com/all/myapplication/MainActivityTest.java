@@ -1,8 +1,11 @@
 package com.all.myapplication;
 
+import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import java.nio.charset.StandardCharsets;
 
@@ -35,6 +38,16 @@ import okhttp3.Response;
 import MyUtil.ApiConfig;
 
 public class MainActivityTest extends AppCompatActivity {
+    CardView cardLogin, cardChat, cardVideo, cardShop, cardEnv, cardCert, cardFingerPrint, cardMd5, cardGighub, cardTest;
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_test);
+
+
+    }
+
+    /*
     String api_key = ApiConfig.API_KEY;
     String build_model = ApiConfig.BUILD_MODEL;
     String mars_cid = UUID.randomUUID().toString();
@@ -356,7 +369,7 @@ public class MainActivityTest extends AppCompatActivity {
                 .build();
         client.newCall(request).enqueue(callback);
     }
-
+    */
 }
 
 

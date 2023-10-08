@@ -16,9 +16,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="16dp"
             android:text="使用openssl运行以下代码可以获取公钥的SHA256哈希值，并进行Base64编码："
-            android:textSize="16sp"
-            android:padding="16dp" />
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,55 +40,61 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/PubKeyBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="公钥校验" />
+                android:layout_weight="1"
+                android:text="公钥校验"
+                android:backgroundTint="#8800BCD4"/>
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/CertBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="证书校验" />
+                android:layout_weight="1"
+                android:text="证书校验"
+                android:backgroundTint="#8800BCD4"/>
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/HostBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Host校验" />
+                android:layout_weight="1"
+                android:text="Host校验"
+                android:backgroundTint="#8800BCD4"/>
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/result_text"
-        android:text="执行结果显示在这里">
+    <ScrollView
+        android:layout_width="350dp"
+        android:layout_height="433dp"
+        android:layout_gravity="center_horizontal">
 
-    </TextView>
+        <TextView
+            android:id="@+id/result_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="执行结果显示在这里" />
 
-<!--    <View-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:padding="5dp"-->
-<!--        android:outlineProvider="bounds"-->
-<!--        android:clipToOutline="true"-->
-<!--        android:elevation="10dp"-->
-<!--        android:layout_gravity="bottom"-->
-<!--        android:background="#7C7D9E7F">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:text="这是一个示例文本"-->
-<!--            android:gravity="center"-->
-<!--            android:textColor="#123456" />-->
-
-<!--    </View>-->
-
+    </ScrollView>
 
 </LinearLayout>

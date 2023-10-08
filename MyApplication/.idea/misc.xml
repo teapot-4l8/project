@@ -3,14 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/drawable/cut_card_background.xml" value="0.1" />
+        <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/drawable/ic_android.xml" value="0.1537037037037037" />
+        <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/drawable/ic_description.xml" value="0.1537037037037037" />
+        <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/layout/activity_b_play.xml" value="0.170703125" />
-        <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/layout/activity_cert.xml" value="0.536" />
+        <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/layout/activity_cert.xml" value="0.264" />
         <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/layout/activity_czy.xml" value="0.2563405797101449" />
         <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/layout/activity_dw.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/layout/activity_env.xml" value="0.4" />
-        <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.259375" />
-        <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/layout/activity_test.xml" value="0.18675213675213675" />
+        <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/layout/activity_md.xml" value="0.1953125" />
+        <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/layout/activity_test.xml" value="0.264" />
         <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/layout/activity_wph.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Administrator/Desktop/code/MyApplication/app/src/main/res/layout/test.xml" value="0.22083333333333333" />
       </map>
     </option>
   </component>
