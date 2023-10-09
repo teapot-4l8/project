@@ -4,7 +4,6 @@
 #include <stdio.h>
 
 
-
 jstring md5notfound(JNIEnv *env, jclass clazz, jstring str) {
     // TODO: implement dymMD5()
     const char *c_str = (*env)->GetStringUTFChars(env, str, 0);
@@ -58,3 +57,8 @@ JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
 }
 
 
+JNIEXPORT jint JNICALL
+Java_com_all_myapplication_ActivityMd_test(JNIEnv *env, jobject thiz) {
+    // TODO: implement test()
+    return 666;
+}

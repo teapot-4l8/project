@@ -22,10 +22,14 @@ public class ActivityMd extends AppCompatActivity {
     private String text;
 
     public native String md5_(String string);
+    public native int test();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_md);
+
+        Log.e("[GITHUB]", String.valueOf(test()));
 
         Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {

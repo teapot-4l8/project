@@ -21,4 +21,12 @@
     <string name="isProxy">是否在抓包:</string>
     <string name="magiskInstalled">是否安装Magisk:</string>
     <string name="kernelsuInstalled">是否安装KernelSU:</string>
+    <string name="phone">电话</string>
+    <string name="password">密码</string>
+    <string name="forgot_password">重置</string>
+    <string name="or">或者</string>
+    <string name="google_icon" />
+    <string name="facebook_icon" />
+    <string name="new_user_register_now">注册</string>
+    <string name="top_icon" />
 </resources>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,9 +29,10 @@ import okhttp3.Call;
 import okhttp3.Response;
 
 public class MainactivityCZY extends AppCompatActivity {
-    private TextView txtUser;
-    private TextView txtPwd;
-    private Button btnLogin, btnReset;
+    private EditText txtUser;
+    private EditText txtPwd;
+    private Button btnLogin;
+    private TextView btnReset;
     public static final String LOGIN_URL = "/tradercloud/sealed/login/login.ashx";
 
 
@@ -138,8 +140,12 @@ public class MainactivityCZY extends AppCompatActivity {
                 Log.e("[*]receive->", dataString);
                 ToastUtils.show(MainactivityCZY.this, parse(dataString));
             } catch (Exception e) {
-                // getApplicationContext()是一个Context类的方法，它用于获取当前应用程序的上下文
-                Toast.makeText(getApplicationContext(), "网络请求异常", Toast.LENGTH_SHORT).show();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainactivityCZY.this, "网络请求异常", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 e.printStackTrace();
             }
         }).start();

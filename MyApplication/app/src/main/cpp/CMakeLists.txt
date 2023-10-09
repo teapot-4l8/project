@@ -13,6 +13,7 @@ project("myapplication")
 
 include_directories(
         AdvancedMd5
+#        mini_io
 )
 
 # Creates and names a library, sets it as either STATIC

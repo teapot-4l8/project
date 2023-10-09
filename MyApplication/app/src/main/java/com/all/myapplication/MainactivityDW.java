@@ -35,6 +35,9 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 public class MainactivityDW extends AppCompatActivity {
+    /**
+     * 校园网不需要上号
+     * */
     private static final String REPLY_LIST = "/sns-itr/v1/reply/content-reply-list";
     private static final String GET_VISITOR_USERID = "/api/v1/app/user_core/users/getVisitorUserId";
     private static final String SHUMEI_ID = "20210807163758afabf6d66401eb2e4f234dbe68af5705014c79067d50b114";
