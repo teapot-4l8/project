@@ -29,4 +29,13 @@
     <string name="facebook_icon" />
     <string name="new_user_register_now">注册</string>
     <string name="top_icon" />
+    <string name="fridaGH">frida</string>
+    <string name="xposed">xposed</string>
+    <string name="dualApp">dualApp</string>
+    <string name="emulator">emulator</string>
+    <string name="memDump">memDump</string>
+    <string name="debug">debug</string>
+    <string name="rootGH">root</string>
+    <string name="virtualApp">virtualApp</string>
+    <string name="magisk">magisk</string>
 </resources>

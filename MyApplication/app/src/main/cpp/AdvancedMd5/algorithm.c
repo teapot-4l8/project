@@ -55,10 +55,3 @@ JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
 
     return JNI_VERSION_1_6;
 }
-
-
-JNIEXPORT jint JNICALL
-Java_com_all_myapplication_ActivityMd_test(JNIEnv *env, jobject thiz) {
-    // TODO: implement test()
-    return 666;
-}

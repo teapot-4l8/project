@@ -44,6 +44,7 @@ import okhttp3.Response;
 import MyUtil.ApiConfig;
 import okhttp3.ResponseBody;
 
+import static com.tg.android.anti.NativeLib.*;
 
 public class MainActivityTest extends AppCompatActivity {
     private static final String API_KEY = "23e7f28019e8407b98b84cd05b5aef2c";
@@ -64,10 +65,16 @@ public class MainActivityTest extends AppCompatActivity {
         setContentView(R.layout.activity_test);
 //        sendRequest();  // 全部的
 //        TestReq1();  // python 2 java 只有搜索
-        TestReq2();  // curl 2 java 只有搜索
+//        TestReq2();  // curl 2 java 只有搜索
+        useExternalSo();
+        String str = AntiFrida();
+        Log.e("[SO]", str);
+    }
 
+    private void useExternalSo() {
 
     }
+
 
     private void TestReq2() {
         new Thread(()->{

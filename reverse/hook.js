@@ -10,4 +10,5 @@ Java.perform(function() {
 })
 
 
-// frida -U -l hook.js -f com.tg.anti --no-pause
+// frida -U -l hook.js -f com.all.myapplication --no-pause
+// frida -UF -l hook.js

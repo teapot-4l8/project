@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         cardTest = findViewById(R.id.test);
         cardMd5 = findViewById(R.id.md);
         cardFingerPrint = findViewById(R.id.signature);
+        cardGighub = findViewById(R.id.github);
     }
 
     private void initListener() {
@@ -100,6 +101,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ActivitySign.class);
+                startActivity(intent);
+            }
+        });
+        cardGighub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ActivityGithub.class);
                 startActivity(intent);
             }
         });
