@@ -196,7 +196,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="环境检测"
+                    android:text="环境检测(java)"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -340,7 +340,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="其它检测"
+                    android:text="其它检测(c)"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 

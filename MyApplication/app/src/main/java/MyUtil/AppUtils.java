@@ -7,10 +7,13 @@ import android.content.pm.PackageManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-public class AppUtils {
+public final class AppUtils {
     private static final String REPORT_VAL_SEPARATOR = "|";
 
     public static String getUDID(Context context) {
@@ -54,5 +57,64 @@ public class AppUtils {
             data[i] = new String(part);
         }
         return String.join("", data).toLowerCase();
+    }
+
+    public static String createRandomMac(String sep) {
+        StringBuilder mac = new StringBuilder();
+        Random random = new Random();
+
+        for (int i = 1; i <= 6; i++) {
+            StringBuilder part = new StringBuilder();
+            for (int j = 0; j < 2; j++) {
+                part.append("0123456789ABCDEF".charAt(random.nextInt(16)));
+            }
+            mac.append(part);
+            if (i != 6) {
+                mac.append(sep);
+            }
+        }
+
+        return mac.toString();
+    }
+
+    public static String genSn() {
+        List<Character> characters = new ArrayList<>();
+        for (char c = '1'; c <= '9'; c++) {
+            characters.add(c);
+        }
+        for (char c = 'a'; c <= 'z'; c++) {
+            characters.add(c);
+        }
+
+        Collections.shuffle(characters);
+
+        StringBuilder sn = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < 10; i++) {
+            sn.append(characters.get(random.nextInt(characters.size())));
+        }
+
+        return sn.toString();
+    }
+
+    public static String f() {
+        return createRandomMac(":") + "|||" + genSn();
+    }
+
+    public static final class a implements MyUtil.report.a.b {
+        @Override
+        public int J() {
+            return 6240300;
+        }
+
+        @Override
+        public String A() {
+            return "android";
+        }
+
+        @Override
+        public String getSessionId() {
+            return null;  //TODO 从这里继续
+        }
     }
 }

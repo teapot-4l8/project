@@ -9,6 +9,4 @@ public class ApiConfig {
 
     public static final String API_KEY = "23e7f28019e8407b98b84cd05b5aef2c";
     public static final String BUILD_MODEL = "M2007J17C";
-
-
 }
